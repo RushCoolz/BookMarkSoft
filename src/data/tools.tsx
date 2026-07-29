@@ -11,6 +11,7 @@ import {
   Calculator as CalcIcon, LineChart, MoveHorizontal,
   HeartPulse, Share2, Smartphone, Dices, FileSpreadsheet, Presentation, Flame, PieChart, Wine, Tags, Video, Minimize2, MonitorSmartphone, Info, Battery
 } from "lucide-react";
+import { Bitcoin, Earth, MapPin, CalendarDays as CalendarDays2, BookOpen, Github, Package, TerminalSquare, Quote, Smile, Camera } from "lucide-react";
 import React from "react";
 
 export function generateToolId(title: string) {
@@ -40,6 +41,9 @@ export const toolCategories = [
       { title: "CSV to JSON", subtitle: "Convert CSV data into JSON arrays.", icon: <FileJson className="w-12 h-12" />, iconColor: "text-blue-500", rating: 4, isBeta: false },
       { title: "YAML to JSON", subtitle: "Convert YAML configs to JSON.", icon: <FileCode2 className="w-12 h-12" />, iconColor: "text-indigo-400", rating: 3, isBeta: true },
       { title: "XML to JSON", subtitle: "Convert XML data into JSON format.", icon: <FileJson className="w-12 h-12" />, iconColor: "text-indigo-600", rating: 4, isBeta: false },
+      { title: "GitHub Profile", subtitle: "Find GitHub user data and repos.", icon: <Github className="w-12 h-12" />, iconColor: "text-slate-800 dark:text-slate-200", rating: 5, isBeta: false, isNew: true },
+      { title: "NPM Explorer", subtitle: "Search and explore NPM packages.", icon: <Package className="w-12 h-12" />, iconColor: "text-red-500", rating: 5, isBeta: false, isNew: true },
+      { title: "API Tester", subtitle: "Test REST API endpoints directly.", icon: <TerminalSquare className="w-12 h-12" />, iconColor: "text-orange-500", rating: 5, isBeta: false, isNew: true },
     ]
   },
   {
@@ -110,6 +114,18 @@ export const toolCategories = [
       { title: "Unix Timestamp", subtitle: "Convert epochs to readable dates.", icon: <Clock className="w-12 h-12" />, iconColor: "text-slate-600", rating: 4, isBeta: false },
       { title: "Days Between", subtitle: "Calculate exact days between two dates.", icon: <CalendarDays className="w-12 h-12" />, iconColor: "text-purple-500", rating: 4, isBeta: false },
       { title: "Timezone Conv", subtitle: "Convert times across world zones.", icon: <Globe className="w-12 h-12" />, iconColor: "text-sky-600", rating: 3, isBeta: true },
+      { title: "Currency Conv.", subtitle: "Live fiat exchange rates.", icon: <Banknote className="w-12 h-12" />, iconColor: "text-emerald-500", rating: 5, isBeta: false, isNew: true },
+      { title: "Crypto Tracker", subtitle: "Live crypto prices & market caps.", icon: <Bitcoin className="w-12 h-12" />, iconColor: "text-amber-500", rating: 5, isBeta: false, isNew: true },
+    ]
+  },
+  {
+    id: "global-data",
+    title: "Global & Data Tools",
+    tools: [
+      { title: "Weather Dash", subtitle: "Global 7-day weather forecast.", icon: <Earth className="w-12 h-12" />, iconColor: "text-cyan-500", rating: 5, isBeta: false, isNew: true },
+      { title: "Country Info", subtitle: "Look up details for any country.", icon: <MapPin className="w-12 h-12" />, iconColor: "text-sky-500", rating: 5, isBeta: false, isNew: true },
+      { title: "Public Holidays", subtitle: "Find holidays for any country and year.", icon: <CalendarDays2 className="w-12 h-12" />, iconColor: "text-fuchsia-500", rating: 5, isBeta: false, isNew: true },
+      { title: "Dictionary", subtitle: "Word definitions, synonyms & audio.", icon: <BookOpen className="w-12 h-12" />, iconColor: "text-rose-500", rating: 5, isBeta: false, isNew: true },
     ]
   },
   {
@@ -142,6 +158,9 @@ export const toolCategories = [
       { title: "Random Number", subtitle: "Generate random numbers instantly.", icon: <Dices className="w-12 h-12" />, iconColor: "text-indigo-500", rating: 5, isBeta: true, isNew: true },
       { title: "Dice Roller", subtitle: "Roll virtual 3D dice.", icon: <Dices className="w-12 h-12" />, iconColor: "text-rose-500", rating: 4, isBeta: true },
       { title: "Fake Data Gen", subtitle: "Generate JSON test data for devs.", icon: <Database className="w-12 h-12" />, iconColor: "text-blue-600", rating: 5, isBeta: true },
+      { title: "Quote Gen", subtitle: "Generate random inspirational quotes.", icon: <Quote className="w-12 h-12" />, iconColor: "text-purple-500", rating: 5, isBeta: false, isNew: true },
+      { title: "Joke Gen", subtitle: "Generate programming and dad jokes.", icon: <Smile className="w-12 h-12" />, iconColor: "text-amber-500", rating: 5, isBeta: false, isNew: true },
+      { title: "Animal Pics", subtitle: "Fetch random cute dogs and cats.", icon: <Camera className="w-12 h-12" />, iconColor: "text-lime-500", rating: 5, isBeta: false, isNew: true },
     ]
   },
   {

@@ -72,6 +72,23 @@ import { UnixTimestampBody } from "@/components/tools/UnixTimestampBody";
 import { DaysBetweenBody } from "@/components/tools/DaysBetweenBody";
 import { TimezoneConvBody } from "@/components/tools/TimezoneConvBody";
 
+
+import { CurrencyConverterBody } from "@/components/tools/CurrencyConverterBody";
+import { CryptoTrackerBody } from "@/components/tools/CryptoTrackerBody";
+import { MacLookupBody } from "@/components/tools/MacLookupBody";
+import { DnsLookupBody } from "@/components/tools/DnsLookupBody";
+import { WhoisLookupBody } from "@/components/tools/WhoisLookupBody";
+import { WeatherDashboardBody } from "@/components/tools/WeatherDashboardBody";
+import { CountryInfoBody } from "@/components/tools/CountryInfoBody";
+import { HolidaysFinderBody } from "@/components/tools/HolidaysFinderBody";
+import { DictionaryBody } from "@/components/tools/DictionaryBody";
+import { GithubProfileBody } from "@/components/tools/GithubProfileBody";
+import { NpmExplorerBody } from "@/components/tools/NpmExplorerBody";
+import { ApiTesterBody } from "@/components/tools/ApiTesterBody";
+import { QuoteGeneratorBody } from "@/components/tools/QuoteGeneratorBody";
+import { JokeGeneratorBody } from "@/components/tools/JokeGeneratorBody";
+import { AnimalPictureBody } from "@/components/tools/AnimalPictureBody";
+
 interface ToolPageClientProps {
   tool: {
     title: string;
@@ -158,6 +175,23 @@ export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
     if (toolId.includes("days-between")) return <DaysBetweenBody />;
     if (toolId.includes("timezone-conv")) return <TimezoneConvBody />;
     
+
+    if (toolId.includes("currency-conv")) return <CurrencyConverterBody />;
+    if (toolId.includes("crypto-tracker")) return <CryptoTrackerBody />;
+    if (toolId.includes("mac-lookup")) return <MacLookupBody />;
+    if (toolId.includes("dns-lookup")) return <DnsLookupBody />;
+    if (toolId.includes("whois-lookup")) return <WhoisLookupBody />;
+    if (toolId.includes("weather-dash")) return <WeatherDashboardBody />;
+    if (toolId.includes("country-info")) return <CountryInfoBody />;
+    if (toolId.includes("public-holidays")) return <HolidaysFinderBody />;
+    if (toolId.includes("dictionary")) return <DictionaryBody />;
+    if (toolId.includes("github-profile")) return <GithubProfileBody />;
+    if (toolId.includes("npm-explorer")) return <NpmExplorerBody />;
+    if (toolId.includes("api-tester")) return <ApiTesterBody />;
+    if (toolId.includes("quote-gen")) return <QuoteGeneratorBody />;
+    if (toolId.includes("joke-gen")) return <JokeGeneratorBody />;
+    if (toolId.includes("animal-pics")) return <AnimalPictureBody />;
+
     // Default fallback
     return (
       <div className="flex flex-col items-center justify-center py-24 text-slate-500 dark:text-slate-400">
