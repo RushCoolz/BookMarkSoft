@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/Sidebar";
 import { Topbar } from "@/components/Topbar";
+import { Footer } from "@/components/Footer";
 import { AuthProvider } from "@/context/AuthContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { GoogleTagManager } from '@next/third-parties/google';
@@ -36,10 +37,11 @@ export default function RootLayout({
           <AuthProvider>
             <Sidebar />
             <Topbar />
-            <main className="xl:ml-64 min-h-screen px-4 pb-4 pt-20 xl:px-8 xl:pb-8 xl:pt-24">
-              <div className="max-w-7xl mx-auto">
+            <main className="xl:ml-64 min-h-screen px-4 pb-4 pt-20 xl:px-8 xl:pb-8 xl:pt-24 flex flex-col">
+              <div className="max-w-7xl mx-auto flex-1 w-full">
                 {children}
               </div>
+              <Footer />
             </main>
           </AuthProvider>
         </ThemeProvider>
