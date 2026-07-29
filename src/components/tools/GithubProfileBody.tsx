@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { ToolContainer, ToolMain } from "./SharedComponents";
-import { Search, Github, Users, Star, GitFork, ExternalLink } from "lucide-react";
+import { Search, GitBranch as Github, Users, Star, GitFork, ExternalLink } from "lucide-react";
 
 export function GithubProfileBody() {
   const [username, setUsername] = useState("");

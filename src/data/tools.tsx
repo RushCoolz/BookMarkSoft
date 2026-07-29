@@ -11,7 +11,7 @@ import {
   Calculator as CalcIcon, LineChart, MoveHorizontal,
   HeartPulse, Share2, Smartphone, Dices, FileSpreadsheet, Presentation, Flame, PieChart, Wine, Tags, Video, Minimize2, MonitorSmartphone, Info, Battery
 } from "lucide-react";
-import { Bitcoin, Earth, MapPin, CalendarDays as CalendarDays2, BookOpen, Github, Package, TerminalSquare, Quote, Smile, Camera } from "lucide-react";
+import { Bitcoin, Earth, MapPin, CalendarDays as CalendarDays2, BookOpen, GitBranch, Package, TerminalSquare, Quote, Smile, Camera } from "lucide-react";
 import React from "react";
 
 export function generateToolId(title: string) {
@@ -41,7 +41,7 @@ export const toolCategories = [
       { title: "CSV to JSON", subtitle: "Convert CSV data into JSON arrays.", icon: <FileJson className="w-12 h-12" />, iconColor: "text-blue-500", rating: 4, isBeta: false },
       { title: "YAML to JSON", subtitle: "Convert YAML configs to JSON.", icon: <FileCode2 className="w-12 h-12" />, iconColor: "text-indigo-400", rating: 3, isBeta: true },
       { title: "XML to JSON", subtitle: "Convert XML data into JSON format.", icon: <FileJson className="w-12 h-12" />, iconColor: "text-indigo-600", rating: 4, isBeta: false },
-      { title: "GitHub Profile", subtitle: "Find GitHub user data and repos.", icon: <Github className="w-12 h-12" />, iconColor: "text-slate-800 dark:text-slate-200", rating: 5, isBeta: false, isNew: true },
+      { title: "GitHub Profile", subtitle: "Find GitHub user data and repos.", icon: <GitBranch className="w-12 h-12" />, iconColor: "text-slate-800 dark:text-slate-200", rating: 5, isBeta: false, isNew: true },
       { title: "NPM Explorer", subtitle: "Search and explore NPM packages.", icon: <Package className="w-12 h-12" />, iconColor: "text-red-500", rating: 5, isBeta: false, isNew: true },
       { title: "API Tester", subtitle: "Test REST API endpoints directly.", icon: <TerminalSquare className="w-12 h-12" />, iconColor: "text-orange-500", rating: 5, isBeta: false, isNew: true },
     ]
