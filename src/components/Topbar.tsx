@@ -4,12 +4,14 @@ import { Bell, Moon, Sun, Star, Sparkles, Terminal, LogIn, Menu } from "lucide-r
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/context/ThemeContext";
+import { usePathname } from "next/navigation";
 import { AuthModal } from "./AuthModal";
 import { ProfileModal } from "./ProfileModal";
 
 export function Topbar() {
   const { user } = useAuth();
   const { isDarkMode, toggleTheme } = useTheme();
+  const pathname = usePathname();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
 
@@ -32,10 +34,10 @@ export function Topbar() {
       </div>
 
       <nav className="hidden xl:flex items-center gap-8">
-        <Link href="/" className="text-sm font-medium text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 border-b-2 border-blue-600 dark:border-blue-500 py-5 transition-colors">Dashboard</Link>
-        <Link href="/favorites" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 py-5 flex items-center gap-1.5"><Star className="w-4 h-4"/> Favorites</Link>
-        <Link href="/api-docs" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 py-5 flex items-center gap-1.5"><Terminal className="w-4 h-4"/> API Docs</Link>
-        <Link href="/request" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 py-5">Request a Tool</Link>
+        <Link href="/" className={`text-sm font-medium py-5 transition-colors border-b-2 ${pathname === "/" ? "text-slate-800 dark:text-slate-200 border-blue-600 dark:border-blue-500" : "text-slate-500 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-200"}`}>Dashboard</Link>
+        <Link href="/favorites" className={`text-sm font-medium py-5 flex items-center gap-1.5 transition-colors border-b-2 ${pathname === "/favorites" ? "text-slate-800 dark:text-slate-200 border-blue-600 dark:border-blue-500" : "text-slate-500 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-200"}`}><Star className="w-4 h-4"/> Favorites</Link>
+        <Link href="/api-docs" className={`text-sm font-medium py-5 flex items-center gap-1.5 transition-colors border-b-2 ${pathname === "/api-docs" ? "text-slate-800 dark:text-slate-200 border-blue-600 dark:border-blue-500" : "text-slate-500 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-200"}`}><Terminal className="w-4 h-4"/> API Docs</Link>
+        <Link href="/request" className={`text-sm font-medium py-5 transition-colors border-b-2 ${pathname === "/request" ? "text-slate-800 dark:text-slate-200 border-blue-600 dark:border-blue-500" : "text-slate-500 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-200"}`}>Request a Tool</Link>
       </nav>
       
       <div className="flex items-center gap-3 xl:gap-5">
