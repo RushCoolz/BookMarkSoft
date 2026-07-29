@@ -109,24 +109,7 @@ export function Sidebar() {
           </button>
         </div>
       
-      <div className="px-4 mb-4">
-        <div className="relative w-full">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
-          <input
-            type="text"
-            placeholder="Search tools..."
-            onChange={(e) => {
-              const val = e.target.value;
-              if (pathname !== "/") {
-                router.push(`/?q=${encodeURIComponent(val)}`);
-              } else {
-                window.dispatchEvent(new CustomEvent('toolsSearch', { detail: val }));
-              }
-            }}
-            className="w-full bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-full pl-10 pr-4 py-2 text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 dark:focus:border-red-500 transition-all shadow-sm"
-          />
-        </div>
-      </div>
+
 
       {/* Top Navigation links for Mobile only */}
       <div className="xl:hidden px-4 mb-2 pb-4 border-b border-border-subtle space-y-1">

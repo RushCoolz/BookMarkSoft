@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import { Bell, Moon, Sun, Star, Sparkles, Terminal, LogIn, Menu } from "lucide-react";
+import { Bell, Moon, Sun, Star, Sparkles, Terminal, LogIn, Menu, Search, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/context/ThemeContext";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { AuthModal } from "./AuthModal";
 import { ProfileModal } from "./ProfileModal";
 
@@ -12,13 +12,43 @@ export function Topbar() {
   const { user } = useAuth();
   const { isDarkMode, toggleTheme } = useTheme();
   const pathname = usePathname();
+  const router = useRouter();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+
+  const handleSearch = (val: string) => {
+    if (pathname !== "/") {
+      router.push(`/?q=${encodeURIComponent(val)}`);
+    } else {
+      window.dispatchEvent(new CustomEvent('toolsSearch', { detail: val }));
+    }
+  };
 
   return (
     <>
     <header className="h-16 bg-white dark:bg-sidebar flex items-center justify-between px-3 sm:px-4 xl:px-8 fixed top-0 right-0 left-0 xl:left-64 z-40 border-b border-slate-100 dark:border-border-subtle transition-colors duration-300">
       
+      {/* Mobile Search Overlay */}
+      {isMobileSearchOpen && (
+        <div className="absolute inset-0 bg-white dark:bg-sidebar flex items-center px-3 sm:px-4 gap-2 z-50 xl:hidden">
+          <button onClick={() => setIsMobileSearchOpen(false)} className="p-1 sm:p-2 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors">
+            <ArrowLeft className="w-6 h-6" />
+          </button>
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
+            <input 
+              autoFocus
+              type="text" 
+              placeholder="Search tools..." 
+              onChange={(e) => handleSearch(e.target.value)}
+              className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-full pl-10 pr-4 py-2 text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-500 transition-all shadow-sm"
+            />
+          </div>
+        </div>
+      )}
+
+
       {/* Mobile Branding (only visible when Sidebar is hidden) */}
       <div className="flex xl:hidden items-center gap-2 sm:gap-3 shrink-0">
         <button 
@@ -33,14 +63,32 @@ export function Topbar() {
         </Link>
       </div>
 
-      <nav className="hidden xl:flex items-center gap-8">
+      <nav className="hidden xl:flex items-center gap-6">
         <Link href="/" className={`text-sm font-medium py-5 transition-colors border-b-2 ${pathname === "/" ? "text-slate-800 dark:text-slate-200 border-blue-600 dark:border-blue-500" : "text-slate-500 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-200"}`}>Dashboard</Link>
         <Link href="/favorites" className={`text-sm font-medium py-5 flex items-center gap-1.5 transition-colors border-b-2 ${pathname === "/favorites" ? "text-slate-800 dark:text-slate-200 border-blue-600 dark:border-blue-500" : "text-slate-500 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-200"}`}><Star className="w-4 h-4"/> Favorites</Link>
         <Link href="/api-docs" className={`text-sm font-medium py-5 flex items-center gap-1.5 transition-colors border-b-2 ${pathname === "/api-docs" ? "text-slate-800 dark:text-slate-200 border-blue-600 dark:border-blue-500" : "text-slate-500 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-200"}`}><Terminal className="w-4 h-4"/> API Docs</Link>
         <Link href="/request" className={`text-sm font-medium py-5 transition-colors border-b-2 ${pathname === "/request" ? "text-slate-800 dark:text-slate-200 border-blue-600 dark:border-blue-500" : "text-slate-500 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-200"}`}>Request a Tool</Link>
       </nav>
       
-      <div className="flex items-center gap-1 sm:gap-3 xl:gap-5 shrink-0">
+      {/* Desktop Search Bar */}
+      <div className="hidden xl:block flex-1 max-w-md mx-6 relative">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
+        <input 
+          type="text" 
+          placeholder="Search tools..." 
+          onChange={(e) => handleSearch(e.target.value)}
+          className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-full pl-10 pr-4 py-2 text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-500 transition-all shadow-sm"
+        />
+      </div>
+
+      <div className="flex items-center gap-1 sm:gap-3 xl:gap-4 shrink-0">
+        <button 
+          onClick={() => setIsMobileSearchOpen(true)}
+          className="xl:hidden p-1.5 sm:p-2 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+          title="Search"
+        >
+          <Search className="w-5 h-5" />
+        </button>
         <button 
           onClick={toggleTheme}
           className="p-1.5 sm:p-2 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" 
