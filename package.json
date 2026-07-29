@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@marsidev/react-turnstile": "^1.5.4",
     "@next/third-parties": "^16.2.12",
     "crypto-js": "^4.2.0",
     "dompurify": "^3.4.12",
