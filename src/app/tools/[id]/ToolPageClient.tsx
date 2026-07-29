@@ -89,6 +89,23 @@ import { QuoteGeneratorBody } from "@/components/tools/QuoteGeneratorBody";
 import { JokeGeneratorBody } from "@/components/tools/JokeGeneratorBody";
 import { AnimalPictureBody } from "@/components/tools/AnimalPictureBody";
 
+import { ResistorCalculatorBody } from "@/components/tools/ResistorCalculatorBody";
+import { OhmsLawBody } from "@/components/tools/OhmsLawBody";
+import { AwgConverterBody } from "@/components/tools/AwgConverterBody";
+import { VinDecoderBody } from "@/components/tools/VinDecoderBody";
+import { CarModelLookupBody } from "@/components/tools/CarModelLookupBody";
+import { FuelCostCalculatorBody } from "@/components/tools/FuelCostCalculatorBody";
+import { AqiRadarBody } from "@/components/tools/AqiRadarBody";
+import { CarbonFootprintBody } from "@/components/tools/CarbonFootprintBody";
+import { SunlightCalculatorBody } from "@/components/tools/SunlightCalculatorBody";
+import { BarcodeScannerBody } from "@/components/tools/BarcodeScannerBody";
+import { IsItDownBody } from "@/components/tools/IsItDownBody";
+import { WhatIsMyIpBody } from "@/components/tools/WhatIsMyIpBody";
+import { BrowserFingerprintBody } from "@/components/tools/BrowserFingerprintBody";
+import { MacroCalculatorBody } from "@/components/tools/MacroCalculatorBody";
+import { BmiCalculatorBody } from "@/components/tools/BmiCalculatorBody";
+
+
 interface ToolPageClientProps {
   tool: {
     title: string;
@@ -141,9 +158,9 @@ export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
     if (toolId.includes("salary-conv")) return <SalaryConverterBody />;
     if (toolId.includes("tip-calc")) return <TipCalcBody />;
     if (toolId.includes("compound-int")) return <CompoundInterestBody />;
-    if (toolId.includes("bmi-calculator")) return <BmiCalcBody />;
+    if (toolId.includes("bmi-calculator")) return <BmiCalculatorBody />;
     if (toolId.includes("bmr")) return <BmrCalcBody />;
-    if (toolId.includes("macro-calc")) return <MacroCalcBody />;
+    if (toolId.includes("macro-calc")) return <MacroCalculatorBody />;
     if (toolId.includes("bac-calc")) return <BacCalcBody />;
     if (toolId.includes("meta-tag")) return <MetaTagGenBody />;
     if (toolId.includes("css-minifier")) return <CssMinifierBody />;
@@ -191,6 +208,22 @@ export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
     if (toolId.includes("quote-gen")) return <QuoteGeneratorBody />;
     if (toolId.includes("joke-gen")) return <JokeGeneratorBody />;
     if (toolId.includes("animal-pics")) return <AnimalPictureBody />;
+
+    
+    // New 15 niche tools
+    if (toolId.includes("resistor-calc")) return <ResistorCalculatorBody />;
+    if (toolId.includes("ohm-s-law")) return <OhmsLawBody />;
+    if (toolId.includes("awg-converter")) return <AwgConverterBody />;
+    if (toolId.includes("vin-decoder")) return <VinDecoderBody />;
+    if (toolId.includes("car-models")) return <CarModelLookupBody />;
+    if (toolId.includes("fuel-cost")) return <FuelCostCalculatorBody />;
+    if (toolId.includes("aqi-radar")) return <AqiRadarBody />;
+    if (toolId.includes("carbon-footprint")) return <CarbonFootprintBody />;
+    if (toolId.includes("sunlight-calc")) return <SunlightCalculatorBody />;
+    if (toolId.includes("barcode-scanner")) return <BarcodeScannerBody />;
+    if (toolId.includes("is-it-down")) return <IsItDownBody />;
+    if (toolId.includes("what-is-my-ip")) return <WhatIsMyIpBody />;
+    if (toolId.includes("browser-fingerprint")) return <BrowserFingerprintBody />;
 
     // Default fallback
     return (

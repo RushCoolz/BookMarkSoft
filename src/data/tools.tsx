@@ -12,6 +12,8 @@ import {
   HeartPulse, Share2, Smartphone, Dices, FileSpreadsheet, Presentation, Flame, PieChart, Wine, Tags, Video, Minimize2, MonitorSmartphone, Info, Battery
 } from "lucide-react";
 import { Bitcoin, Earth, MapPin, CalendarDays as CalendarDays2, BookOpen, GitBranch, Package, TerminalSquare, Quote, Smile, Camera } from "lucide-react";
+
+import { Calculator as Calc2, Zap, Cable, Car, CarFront, Fuel, ScanBarcode, Wind, Leaf, Sun, Shield } from "lucide-react";
 import React from "react";
 
 export function generateToolId(title: string) {
@@ -132,6 +134,9 @@ export const toolCategories = [
     id: "health-fitness",
     title: "Health & Fitness",
     tools: [
+
+      { title: "Barcode Scanner", subtitle: "Lookup food barcode nutrition.", icon: <ScanBarcode className="w-12 h-12" />, iconColor: "text-green-600", rating: 5, isBeta: false, isNew: true },
+
       { title: "BMI Calculator", subtitle: "Calculate Body Mass Index.", icon: <HeartPulse className="w-12 h-12" />, iconColor: "text-rose-500", rating: 5, isBeta: true, isNew: true },
       { title: "BMR & TDEE", subtitle: "Calculate daily energy expenditure.", icon: <Flame className="w-12 h-12" />, iconColor: "text-orange-500", rating: 5, isBeta: true },
       { title: "Macro Calculator", subtitle: "Calculate daily macronutrients.", icon: <PieChart className="w-12 h-12" />, iconColor: "text-green-500", rating: 4, isBeta: true },
@@ -167,6 +172,11 @@ export const toolCategories = [
     id: "network-it",
     title: "Network & IT",
     tools: [
+
+      { title: "Is It Down?", subtitle: "Check if a website is online.", icon: <Globe className="w-12 h-12" />, iconColor: "text-blue-500", rating: 5, isBeta: false, isNew: true },
+      { title: "What Is My IP", subtitle: "Find your public IP and location.", icon: <MapPin className="w-12 h-12" />, iconColor: "text-red-500", rating: 5, isBeta: false, isNew: true },
+      { title: "Browser Fingerprint", subtitle: "See what data your browser leaks.", icon: <Fingerprint className="w-12 h-12" />, iconColor: "text-purple-500", rating: 5, isBeta: false, isNew: true },
+
       { title: "Subnet Calc", subtitle: "IP Subnet and CIDR calculator.", icon: <Network className="w-12 h-12" />, iconColor: "text-emerald-600", rating: 5, isBeta: true, isNew: true },
       { title: "MAC Lookup", subtitle: "Find MAC address vendor details.", icon: <Search className="w-12 h-12" />, iconColor: "text-slate-600", rating: 4, isBeta: true },
     ]
@@ -181,4 +191,32 @@ export const toolCategories = [
       { title: "Battery Calc", subtitle: "Estimate device battery life.", icon: <Battery className="w-12 h-12" />, iconColor: "text-green-500", rating: 3, isBeta: true },
     ]
   }
+
+  {
+    id: "electrical-electronics",
+    title: "Electrical & Electronics",
+    tools: [
+      { title: "Resistor Calc", subtitle: "Resistor color code calculator.", icon: <Calc2 className="w-12 h-12" />, iconColor: "text-blue-500", rating: 5, isBeta: false, isNew: true },
+      { title: "Ohm's Law", subtitle: "Voltage, current, resistance calculator.", icon: <Zap className="w-12 h-12" />, iconColor: "text-yellow-500", rating: 5, isBeta: false, isNew: true },
+      { title: "AWG Converter", subtitle: "AWG wire size to metric converter.", icon: <Cable className="w-12 h-12" />, iconColor: "text-slate-500", rating: 4, isBeta: false, isNew: true },
+    ]
+  },
+  {
+    id: "cars-vehicles",
+    title: "Cars & Vehicles",
+    tools: [
+      { title: "VIN Decoder", subtitle: "Decode vehicle ID numbers.", icon: <Car className="w-12 h-12" />, iconColor: "text-indigo-500", rating: 5, isBeta: false, isNew: true },
+      { title: "Car Models", subtitle: "Find all models by car brand.", icon: <CarFront className="w-12 h-12" />, iconColor: "text-red-500", rating: 4, isBeta: false, isNew: true },
+      { title: "Fuel Cost Calc", subtitle: "Calculate exact road trip fuel costs.", icon: <Fuel className="w-12 h-12" />, iconColor: "text-green-500", rating: 5, isBeta: false, isNew: true },
+    ]
+  },
+  {
+    id: "eco-friendly",
+    title: "Eco-Friendly & Sustainability",
+    tools: [
+      { title: "Live AQI Radar", subtitle: "Check real-time air pollution globally.", icon: <Wind className="w-12 h-12" />, iconColor: "text-teal-500", rating: 5, isBeta: false, isNew: true },
+      { title: "Carbon Footprint", subtitle: "Estimate your CO2 emissions.", icon: <Leaf className="w-12 h-12" />, iconColor: "text-green-500", rating: 5, isBeta: false, isNew: true },
+      { title: "Sunlight Calc", subtitle: "Calculate daylight hours & sunrise.", icon: <Sun className="w-12 h-12" />, iconColor: "text-yellow-500", rating: 4, isBeta: false, isNew: true },
+    ]
+  },
 ];
