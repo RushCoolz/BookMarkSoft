@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "BookmarkSoft Dashboard",
   description: "Professional web tools platform",
   verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION,
+    google: "esa_sH6hOXnX3OmwTH3RuESPhwjUqWX-ipWYJhkx2ZY",
   },
 };
 
