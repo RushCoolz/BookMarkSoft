@@ -45,8 +45,8 @@ export default function ContactPage() {
         <h1 className="text-4xl font-bold tracking-tight text-slate-800 dark:text-slate-100 sm:text-5xl mb-4">
           Get in Touch
         </h1>
-        <p className="text-xl text-slate-500 dark:text-slate-400">
-          Have a tool request, found a bug, or just want to say hi? We'd love to hear from you.
+        <p className="text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Have a tool request, found a bug, or just want to say hi? You can fill out the form below or email us directly at <a href="mailto:support@bookmarksoft.uk" className="text-blue-600 dark:text-blue-400 font-medium hover:underline">support@bookmarksoft.uk</a>.
         </p>
       </div>
 

@@ -31,7 +31,7 @@ export default function RequestToolPage() {
           Request a Tool
         </h1>
         <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-          Have an idea for a tool that would make your life easier? Let us know! We constantly build new utilities based on community feedback.
+          Have an idea for a tool that would make your life easier? Let us know below or email us directly at <a href="mailto:support@bookmarksoft.uk" className="text-blue-600 dark:text-blue-400 font-medium hover:underline">support@bookmarksoft.uk</a>. We constantly build new utilities based on community feedback.
         </p>
       </div>
 
