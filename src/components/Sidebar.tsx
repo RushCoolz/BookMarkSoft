@@ -1,6 +1,6 @@
 "use client";
 import { Terminal, FileText, Image as ImageIcon, Shield, Calculator, Settings, Search, X, LayoutDashboard, Star, FileCode2, MessageSquarePlus, HeartPulse, Share2, Smartphone, Dices, Network, Banknote } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -9,6 +9,8 @@ export function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const isClickScrolling = useRef(false);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const navItems = [
     { name: "Developer & Code", icon: Terminal, id: "developer-code" },
@@ -27,10 +29,17 @@ export function Sidebar() {
     const handleScroll = () => {
       // Only compute scroll on the homepage
       if (pathname !== "/") return;
+      if (isClickScrolling.current) return;
+
+      const scrollPosition = window.scrollY + 300; // offset for hero section
+      
+      // If we are at the very bottom of the page, highlight the last section
+      if (window.innerHeight + Math.round(window.scrollY) >= document.body.offsetHeight - 50) {
+        setActiveSection(navItems[navItems.length - 1].id);
+        return;
+      }
 
       const sections = navItems.map(item => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 300; // offset for hero section
-
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
         if (section && section.offsetTop <= scrollPosition) {
@@ -54,11 +63,19 @@ export function Sidebar() {
       
       if (pathname === "/") {
         // We are on homepage, smooth scroll to section
+        isClickScrolling.current = true;
+        setActiveSection(id);
+        
         const element = document.getElementById(id);
         if (element) {
           const y = element.getBoundingClientRect().top + window.scrollY - 100;
           window.scrollTo({ top: y, behavior: 'smooth' });
         }
+        
+        if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+        scrollTimeout.current = setTimeout(() => {
+          isClickScrolling.current = false;
+        }, 1000); // Re-enable scroll listener after animation
       } else {
         // Not on homepage, navigate to homepage with hash
         router.push(`/#${id}`);
