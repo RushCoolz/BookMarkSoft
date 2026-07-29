@@ -43,7 +43,11 @@ export function MacLookupBody() {
         country: data.country,
       });
     } catch (err: any) {
-      setError(err.message || "Failed to lookup MAC address");
+      if (err.name === 'TypeError' && err.message === 'Failed to fetch') {
+        setError("Network Error: Your adblocker or browser blocked the request to maclookup.app.");
+      } else {
+        setError(err.message || "Failed to lookup MAC address");
+      }
     } finally {
       setLoading(false);
     }

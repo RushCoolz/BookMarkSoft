@@ -53,25 +53,25 @@ export function DaysBetweenBody() {
         <div className="max-w-3xl mx-auto w-full space-y-8">
           
           <div className="flex flex-col md:flex-row items-center gap-6 justify-center bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-3xl">
-            <div className="w-full space-y-2">
-              <label className="text-sm font-bold text-slate-500 uppercase tracking-wider pl-1">Start Date</label>
+            <div>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Start Date</label>
               <input 
                 type="date" 
-                value={date1}
+                value={date1} 
                 onChange={(e) => setDate1(e.target.value)}
-                className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 font-bold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
+                className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 font-medium focus:ring-2 focus:ring-purple-500/50 dark:text-white"
               />
             </div>
 
             <ArrowRight className="w-6 h-6 text-slate-300 mt-6 hidden md:block" />
 
-            <div className="w-full space-y-2">
-              <label className="text-sm font-bold text-slate-500 uppercase tracking-wider pl-1">End Date</label>
+            <div>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">End Date</label>
               <input 
                 type="date" 
-                value={date2}
+                value={date2} 
                 onChange={(e) => setDate2(e.target.value)}
-                className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 font-bold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
+                className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 font-medium focus:ring-2 focus:ring-purple-500/50 dark:text-white"
               />
             </div>
           </div>

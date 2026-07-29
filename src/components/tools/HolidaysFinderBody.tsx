@@ -15,9 +15,18 @@ export function HolidaysFinderBody() {
     setError("");
     try {
       const res = await fetch(`https://date.nager.at/api/v3/PublicHolidays/${year}/${countryCode}`);
-      if (!res.ok) throw new Error("Could not find holidays for this country/year");
-      const data = await res.json();
-      setHolidays(data);
+      if (!res.ok) throw new Error("Failed to fetch holidays");
+      const text = await res.text();
+      if (!text) {
+        setError("No holidays found for this year/country combination.");
+        return;
+      }
+      const json = JSON.parse(text);
+      if (json.length === 0) {
+        setError("No holidays found.");
+      } else {
+        setHolidays(json);
+      }
     } catch (err: any) {
       setError(err.message || "Failed to fetch holidays");
       setHolidays([]);

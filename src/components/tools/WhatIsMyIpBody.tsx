@@ -11,11 +11,23 @@ export function WhatIsMyIpBody() {
   useEffect(() => {
     const fetchIpData = async () => {
       try {
-        // geojs.io is free, requires no key, and supports CORS/HTTPS
-        const res = await fetch("https://get.geojs.io/v1/ip/geo.json");
+        // GeoJS was blocked by adblockers for some users, switching to ipinfo.io
+        const res = await fetch("https://ipinfo.io/json");
         if (!res.ok) throw new Error("Failed to fetch IP data");
         const json = await res.json();
-        setData(json);
+        
+        // normalize keys to match previous GeoJS format for UI
+        setData({
+          ip: json.ip,
+          city: json.city,
+          region: json.region,
+          country: json.country,
+          organization: json.org,
+          asn: json.org ? json.org.split(" ")[0] : "",
+          latitude: json.loc ? json.loc.split(",")[0] : "",
+          longitude: json.loc ? json.loc.split(",")[1] : "",
+          timezone: json.timezone
+        });
       } catch (err: any) {
         setError(err.message || "Failed to load IP details");
       } finally {

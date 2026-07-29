@@ -31,7 +31,12 @@ export function CountryInfoBody() {
         setCountry(data[0]);
       }
     } catch (err: any) {
-      setError(err.message || "Failed to find country data");
+      if (err.name === 'TypeError' && err.message === 'Failed to fetch') {
+        setError("Network Error: Adblocker or CORS blocked the request to restcountries.com");
+      } else {
+        setError(err.message || "Failed to fetch country details");
+      }
+      setCountry(null);
     } finally {
       setLoading(false);
     }

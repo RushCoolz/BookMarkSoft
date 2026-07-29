@@ -128,7 +128,7 @@ export function FakeDataGenBody() {
                 value={output}
                 readOnly
                 placeholder="Click 'Generate Data' to create mock JSON records..."
-                className="w-full h-full p-6 font-mono text-sm text-sky-400 bg-transparent outline-none resize-none custom-scrollbar"
+                className="w-full h-[600px] p-6 font-mono text-sm text-sky-400 bg-transparent outline-none resize-none custom-scrollbar"
               ></textarea>
             </div>
           </div>

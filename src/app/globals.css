@@ -45,9 +45,17 @@ body {
   input[type="number"],
   input[type="password"],
   input[type="email"],
+  input[type="date"],
+  input[type="time"],
   textarea,
   select {
     @apply bg-white dark:bg-slate-800/50 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500;
+  }
+
+  .dark input[type="date"],
+  .dark input[type="time"],
+  .dark select {
+    color-scheme: dark;
   }
 
   /* Custom Checkboxes */
