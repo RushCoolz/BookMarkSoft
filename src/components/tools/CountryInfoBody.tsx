@@ -16,23 +16,49 @@ export function CountryInfoBody() {
     setError("");
     setCountry(null);
 
-    try {
-      const res = await fetch(`/api/proxy?url=${encodeURIComponent(`https://restcountries.com/v3.1/name/${encodeURIComponent(query.trim())}?fullText=true`)}`);
-      if (!res.ok) {
-        // Fallback to partial search if full text fails
-        const resPartial = await fetch(`/api/proxy?url=${encodeURIComponent(`https://restcountries.com/v3.1/name/${encodeURIComponent(query.trim())}`)}`);
-        if (!resPartial.ok) throw new Error("Country not found");
-        const data = await resPartial.json();
-        if (data.success === false) throw new Error(data.errors?.[0]?.message || "API Deprecated");
-        setCountry(data[0]);
-      } else {
-        const data = await res.json();
-        if (data.success === false) throw new Error(data.errors?.[0]?.message || "API Deprecated. Needs API key.");
-        setCountry(data[0]);
+      const res = await fetch('https://cdn.jsdelivr.net/npm/world-countries@5.1.0/countries.json');
+      if (!res.ok) throw new Error("Network Error: Failed to fetch country database");
+      
+      const allCountries = await res.json();
+      const queryLower = query.trim().toLowerCase();
+      
+      let data = allCountries.filter((c: any) => 
+        c.name.common.toLowerCase() === queryLower || 
+        c.name.official.toLowerCase() === queryLower ||
+        c.cca2.toLowerCase() === queryLower ||
+        c.cca3.toLowerCase() === queryLower
+      );
+      
+      if (data.length === 0) {
+        data = allCountries.filter((c: any) => 
+          c.name.common.toLowerCase().includes(queryLower) || 
+          c.name.official.toLowerCase().includes(queryLower)
+        );
       }
+
+      if (data.length === 0) {
+        throw new Error("Country not found");
+      }
+
+      const match = data[0];
+      // Format the data to match the UI expectations
+      const formattedCountry = {
+        name: match.name,
+        flags: {
+          svg: `https://flagcdn.com/${match.cca2.toLowerCase()}.svg`
+        },
+        capital: match.capital || ['N/A'],
+        region: match.region,
+        subregion: match.subregion || 'N/A',
+        population: match.population || 'N/A (Static DB)',
+        languages: match.languages || {},
+        currencies: match.currencies || {}
+      };
+
+      setCountry(formattedCountry);
     } catch (err: any) {
       if (err.name === 'TypeError' && err.message === 'Failed to fetch') {
-        setError("Network Error: Adblocker or CORS blocked the request to restcountries.com");
+        setError("Network Error: Adblocker or CORS blocked the request.");
       } else {
         setError(err.message || "Failed to fetch country details");
       }
