@@ -6,7 +6,6 @@ import { Topbar } from "@/components/Topbar";
 import { Footer } from "@/components/Footer";
 import { AuthProvider } from "@/context/AuthContext";
 import { ThemeProvider } from "@/context/ThemeContext";
-import { CookieConsent } from "@/components/CookieConsent";
 import { AnalyticsProvider } from "@/components/AnalyticsProvider";
 import { FavoritesProvider } from "@/context/FavoritesContext";
 
@@ -61,7 +60,6 @@ export default function RootLayout({
                 </div>
                 <Footer />
               </main>
-              <CookieConsent />
             </FavoritesProvider>
           </AuthProvider>
         </ThemeProvider>
