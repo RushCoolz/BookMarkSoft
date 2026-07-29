@@ -6,7 +6,8 @@ import { Topbar } from "@/components/Topbar";
 import { Footer } from "@/components/Footer";
 import { AuthProvider } from "@/context/AuthContext";
 import { ThemeProvider } from "@/context/ThemeContext";
-import { GoogleTagManager } from '@next/third-parties/google';
+import { CookieConsent } from "@/components/CookieConsent";
+import { AnalyticsProvider } from "@/components/AnalyticsProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,8 +32,8 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} h-full antialiased`}
     >
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
       <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
+        <AnalyticsProvider gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
         <ThemeProvider>
           <AuthProvider>
             <Sidebar />
@@ -43,6 +44,7 @@ export default function RootLayout({
               </div>
               <Footer />
             </main>
+            <CookieConsent />
           </AuthProvider>
         </ThemeProvider>
       </body>
