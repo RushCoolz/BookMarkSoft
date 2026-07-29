@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
 import { SeoContentBlock } from "@/components/SeoContentBlock";
 
@@ -93,6 +93,7 @@ interface ToolPageClientProps {
 }
 
 export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
+  const router = useRouter();
 
   const renderToolBody = () => {
     if (toolId.includes("password-generator") || toolId.includes("password")) return <PasswordGeneratorBody />;
@@ -187,9 +188,9 @@ export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
     <div className="w-full max-w-5xl mx-auto space-y-6 pt-4 pb-12">
       {/* Header */}
       <div className="flex items-center gap-4 px-2">
-        <Link href="/" className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 transition-colors">
+        <button onClick={() => router.back()} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 transition-colors">
           <ChevronLeft className="w-6 h-6" />
-        </Link>
+        </button>
         <div className={`w-12 h-12 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center ${tool.iconColor}`}>
           {tool.icon}
         </div>
