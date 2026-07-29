@@ -41,7 +41,7 @@ export function CarModelLookupBody() {
         <div className="max-w-3xl mx-auto space-y-6">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex justify-center items-center gap-2">
-              <CarFront className="w-6 h-6 text-red-500" />
+              <CarFront className="w-6 h-6 text-emerald-500" />
               Car Model Lookup
             </h2>
             <p className="text-slate-600 dark:text-slate-400 mt-2">
@@ -81,7 +81,7 @@ export function CarModelLookupBody() {
                   <List className="w-4 h-4" />
                   Models for {make.toUpperCase()}
                 </span>
-                <span className="text-xs px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-full font-bold">
+                <span className="text-xs px-2 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-full font-bold">
                   {models.length} found
                 </span>
               </div>

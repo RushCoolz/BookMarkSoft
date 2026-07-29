@@ -19,7 +19,7 @@ export function CurrencyConverterBody() {
       const res = await fetch(`https://api.frankfurter.app/latest?from=${currency}`);
       if (!res.ok) throw new Error("Failed to fetch rates");
       const data = await res.json();
-      setRates(data.rates);
+      setRates(data[base.toLowerCase()]);
       setLastUpdated(data.date);
     } catch (err: any) {
       setError(err.message || "Something went wrong");

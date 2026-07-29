@@ -28,7 +28,7 @@ export function MacLookupBody() {
     setResult(null);
 
     try {
-      const res = await fetch(`https://api.maclookup.app/v2/macs/${mac}`);
+      const res = await fetch(`/api/proxy?url=${encodeURIComponent(`https://api.maclookup.app/v2/macs/${mac}`)}`);
       if (!res.ok) throw new Error("Could not find vendor for this MAC address");
       const data = await res.json();
       

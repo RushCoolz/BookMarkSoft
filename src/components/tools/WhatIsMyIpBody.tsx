@@ -12,7 +12,7 @@ export function WhatIsMyIpBody() {
     const fetchIpData = async () => {
       try {
         // GeoJS was blocked by adblockers for some users, switching to ipinfo.io
-        const res = await fetch("https://ipinfo.io/json");
+        const res = await fetch(`/api/proxy?url=${encodeURIComponent("https://ipinfo.io/json")}`);
         if (!res.ok) throw new Error("Failed to fetch IP data");
         const json = await res.json();
         

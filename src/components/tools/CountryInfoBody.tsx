@@ -17,10 +17,10 @@ export function CountryInfoBody() {
     setCountry(null);
 
     try {
-      const res = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(query.trim())}?fullText=true`);
+      const res = await fetch(`/api/proxy?url=${encodeURIComponent(`https://restcountries.com/v3.1/name/${encodeURIComponent(query.trim())}?fullText=true`)}`);
       if (!res.ok) {
         // Fallback to partial search if full text fails
-        const resPartial = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(query.trim())}`);
+        const resPartial = await fetch(`/api/proxy?url=${encodeURIComponent(`https://restcountries.com/v3.1/name/${encodeURIComponent(query.trim())}`)}`);
         if (!resPartial.ok) throw new Error("Country not found");
         const data = await resPartial.json();
         if (data.success === false) throw new Error(data.errors?.[0]?.message || "API Deprecated");

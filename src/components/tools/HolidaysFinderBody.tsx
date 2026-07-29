@@ -14,7 +14,7 @@ export function HolidaysFinderBody() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(`https://date.nager.at/api/v3/PublicHolidays/${year}/${countryCode}`);
+      const res = await fetch(`/api/proxy?url=${encodeURIComponent(`https://date.nager.at/api/v3/PublicHolidays/${year}/${countryCode}`)}`);
       if (!res.ok) throw new Error("Failed to fetch holidays");
       const text = await res.text();
       if (!text) {
