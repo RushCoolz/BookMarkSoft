@@ -16,10 +16,10 @@ export function CurrencyConverterBody() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(`https://api.frankfurter.app/latest?from=${currency}`);
+      const res = await fetch(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${currency.toLowerCase()}.json`);
       if (!res.ok) throw new Error("Failed to fetch rates");
       const data = await res.json();
-      setRates(data[base.toLowerCase()]);
+      setRates(data[currency.toLowerCase()]);
       setLastUpdated(data.date);
     } catch (err: any) {
       setError(err.message || "Something went wrong");
