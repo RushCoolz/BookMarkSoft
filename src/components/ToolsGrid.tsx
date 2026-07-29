@@ -3,9 +3,28 @@ import { useState, useEffect } from "react";
 import { Cloud, Search } from "lucide-react";
 import { ToolCard } from "./ToolCard";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { toolCategories, generateToolId } from "../data/tools";
 export function ToolsGrid() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const searchParams = useSearchParams();
+  const initialQuery = searchParams.get("q") || "";
+  const [searchQuery, setSearchQuery] = useState(initialQuery.toLowerCase());
+
+  useEffect(() => {
+    // If the URL changes (e.g. from subpage navigation), update the state
+    const q = searchParams.get("q");
+    if (q !== null) {
+      setSearchQuery(q.toLowerCase());
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
+    const handleSearch = (e: CustomEvent) => {
+      setSearchQuery(e.detail.toLowerCase());
+    };
+    window.addEventListener('toolsSearch', handleSearch as EventListener);
+    return () => window.removeEventListener('toolsSearch', handleSearch as EventListener);
+  }, []);
 
   // Filter logic
   const filteredCategories = toolCategories.map(cat => {
