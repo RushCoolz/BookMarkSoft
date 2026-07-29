@@ -16,8 +16,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "BookmarkSoft Dashboard",
-  description: "Professional web tools platform",
+  title: {
+    template: '%s | BookmarkSoft',
+    default: 'BookmarkSoft - Free Developer & Utility Tools',
+  },
+  description: "A comprehensive suite of free, secure, browser-based developer tools, formatters, calculators, and generators.",
+  keywords: ["developer tools", "JSON formatter", "XML formatter", "base64 decode", "calculators", "free online tools"],
+  openGraph: {
+    title: 'BookmarkSoft - Free Developer & Utility Tools',
+    description: 'A comprehensive suite of free, secure, browser-based developer tools, formatters, calculators, and generators.',
+    url: 'https://bookmarksoft.com',
+    siteName: 'BookmarkSoft',
+    locale: 'en_US',
+    type: 'website',
+  },
   verification: {
     google: "esa_sH6hOXnX3OmwTH3RuESPhwjUqWX-ipWYJhkx2ZY",
   },
