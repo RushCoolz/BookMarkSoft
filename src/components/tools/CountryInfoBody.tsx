@@ -16,6 +16,7 @@ export function CountryInfoBody() {
     setError("");
     setCountry(null);
 
+    try {
       const res = await fetch('https://cdn.jsdelivr.net/npm/world-countries@5.1.0/countries.json');
       if (!res.ok) throw new Error("Network Error: Failed to fetch country database");
       
