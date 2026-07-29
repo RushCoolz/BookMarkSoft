@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Bell, Moon, Sun, Star, Sparkles, Terminal, LogIn, Menu } from "lucide-react";
+import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/context/ThemeContext";
 import { AuthModal } from "./AuthModal";
@@ -24,10 +25,10 @@ export function Topbar() {
         >
           <Menu className="w-6 h-6" />
         </button>
-        <div className="flex items-center gap-2 font-bold text-lg text-slate-800 dark:text-slate-200 tracking-tight">
+        <Link href="/" className="flex items-center gap-2 font-bold text-lg text-slate-800 dark:text-slate-200 tracking-tight cursor-pointer">
           <img src="/logo.png" alt="Logo" className="w-6 h-6 object-contain mix-blend-multiply dark:mix-blend-normal dark:invert" />
           BookmarkSoft
-        </div>
+        </Link>
       </div>
 
       <nav className="hidden xl:flex items-center gap-8">

@@ -1,6 +1,7 @@
 "use client";
 import { Terminal, FileText, Image as ImageIcon, Shield, Calculator, Settings, Search, X, LayoutDashboard, Star, FileCode2, MessageSquarePlus, HeartPulse, Share2, Smartphone, Dices, Network, Banknote } from "lucide-react";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export function Sidebar() {
   const [activeSection, setActiveSection] = useState("developer-code");
@@ -65,10 +66,10 @@ export function Sidebar() {
 
       <aside className={`flex flex-col w-64 h-screen bg-sidebar border-r border-border-subtle fixed left-0 top-0 z-50 transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'} xl:translate-x-0`}>
         <div className="pt-6 pb-4 flex items-center justify-between px-6">
-          <div className="flex items-center gap-2 font-bold text-xl text-slate-800 dark:text-slate-200 tracking-tight">
+          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-slate-800 dark:text-slate-200 tracking-tight cursor-pointer">
             <img src="/logo.png" alt="BookmarkSoft Logo" className="w-8 h-8 object-contain mix-blend-multiply dark:mix-blend-normal dark:invert" />
             BookmarkSoft
-          </div>
+          </Link>
           <button 
             className="xl:hidden p-1 text-slate-400 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 transition-colors"
             onClick={() => setIsOpen(false)}
