@@ -18,8 +18,12 @@ export function TimezoneConvBody() {
   const [time, setTime] = useState(new Date());
   const [userZones, setUserZones] = useState(defaultZones);
   
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [availableZones, setAvailableZones] = useState<string[]>([]);
   const [selectedNewZone, setSelectedNewZone] = useState("");
+
+  const filteredZones = availableZones.filter(z => z.toLowerCase().replace(/_/g, ' ').includes(searchQuery.toLowerCase()));
 
   useEffect(() => {
     try {
@@ -41,15 +45,16 @@ export function TimezoneConvBody() {
   const addZone = () => {
     if (!selectedNewZone) return;
     
-    // Prevent duplicates
     if (userZones.some(z => z.zone === selectedNewZone)) {
       setSelectedNewZone("");
+      setSearchQuery("");
       return;
     }
 
     const name = selectedNewZone.split('/').pop()?.replace(/_/g, ' ') || selectedNewZone;
     setUserZones([...userZones, { name, zone: selectedNewZone }]);
     setSelectedNewZone("");
+    setSearchQuery("");
   };
 
   const removeZone = (index: number) => {
@@ -76,21 +81,46 @@ export function TimezoneConvBody() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-2xl">
-            <select 
-              value={selectedNewZone}
-              onChange={(e) => setSelectedNewZone(e.target.value)}
-              className="w-full sm:flex-1 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 font-medium focus:outline-none focus:ring-2 focus:ring-sky-500/50"
-            >
-              <option value="">-- Add a new timezone --</option>
-              {availableZones.map(z => (
-                <option key={z} value={z}>{z.replace(/_/g, ' ')}</option>
-              ))}
-            </select>
+          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-2xl relative z-10">
+            <div className="relative w-full sm:flex-1">
+              <input 
+                type="text"
+                placeholder="Search timezone (e.g. New York)..."
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setSelectedNewZone(""); // Clear selection if they start typing again
+                  setIsDropdownOpen(true);
+                }}
+                onFocus={() => setIsDropdownOpen(true)}
+                onBlur={() => setTimeout(() => setIsDropdownOpen(false), 200)}
+                className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 font-medium focus:outline-none focus:ring-2 focus:ring-sky-500/50"
+              />
+              {isDropdownOpen && (
+                <div className="absolute top-full left-0 right-0 mt-2 max-h-60 overflow-y-auto bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg">
+                  {filteredZones.length > 0 ? filteredZones.map(z => (
+                    <button
+                      key={z}
+                      onClick={() => {
+                        setSelectedNewZone(z);
+                        setSearchQuery(z.replace(/_/g, ' '));
+                        setIsDropdownOpen(false);
+                      }}
+                      className="w-full text-left px-4 py-3 hover:bg-sky-50 dark:hover:bg-sky-900/30 text-slate-700 dark:text-slate-300 transition-colors border-b border-slate-100 dark:border-slate-800 last:border-0"
+                    >
+                      {z.replace(/_/g, ' ')}
+                    </button>
+                  )) : (
+                    <div className="px-4 py-3 text-slate-500">No timezones found.</div>
+                  )}
+                </div>
+              )}
+            </div>
+            
             <button 
               onClick={addZone}
               disabled={!selectedNewZone}
-              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold flex items-center justify-center gap-2 transition-colors"
+              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold flex items-center justify-center gap-2 transition-colors shrink-0"
             >
               <Plus className="w-5 h-5" /> Add
             </button>
