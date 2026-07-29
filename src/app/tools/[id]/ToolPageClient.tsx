@@ -63,6 +63,22 @@ import { BatteryCalcBody } from "@/components/tools/BatteryCalcBody";
 import { WordToPdfBody } from "@/components/tools/WordToPdfBody";
 import { ExcelToPdfBody } from "@/components/tools/ExcelToPdfBody";
 import { PptToPdfBody } from "@/components/tools/PptToPdfBody";
+import { HtmlEntitiesBody } from "@/components/tools/HtmlEntitiesBody";
+import { DiffCheckerBody } from "@/components/tools/DiffCheckerBody";
+import { RegexTesterBody } from "@/components/tools/RegexTesterBody";
+import { MergePdfBody } from "@/components/tools/MergePdfBody";
+import { SplitPdfBody } from "@/components/tools/SplitPdfBody";
+import { ProtectPdfBody } from "@/components/tools/ProtectPdfBody";
+import { SignatureGenBody } from "@/components/tools/SignatureGenBody";
+import { LiveMarkdownBody } from "@/components/tools/LiveMarkdownBody";
+import { WebpToPngJpgBody } from "@/components/tools/WebpToPngJpgBody";
+import { AddWatermarkBody } from "@/components/tools/AddWatermarkBody";
+import { PaletteGenBody } from "@/components/tools/PaletteGenBody";
+import { IcoGeneratorBody } from "@/components/tools/IcoGeneratorBody";
+import { UnitConverterBody } from "@/components/tools/UnitConverterBody";
+import { UnixTimestampBody } from "@/components/tools/UnixTimestampBody";
+import { DaysBetweenBody } from "@/components/tools/DaysBetweenBody";
+import { TimezoneConvBody } from "@/components/tools/TimezoneConvBody";
 
 interface ToolPageClientProps {
   tool: {
@@ -138,6 +154,24 @@ export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
     if (toolId.includes("device-info")) return <DeviceInfoBody />;
     if (toolId.includes("imei-checker")) return <ImeiCheckerBody />;
     if (toolId.includes("battery-calc")) return <BatteryCalcBody />;
+
+    // New 16 Tools
+    if (toolId.includes("html-entities")) return <HtmlEntitiesBody />;
+    if (toolId.includes("diff-checker")) return <DiffCheckerBody />;
+    if (toolId.includes("regex-tester")) return <RegexTesterBody />;
+    if (toolId.includes("merge-pdf")) return <MergePdfBody />;
+    if (toolId.includes("split-pdf")) return <SplitPdfBody />;
+    if (toolId.includes("password-protect")) return <ProtectPdfBody />;
+    if (toolId.includes("signature-gen")) return <SignatureGenBody />;
+    if (toolId.includes("live-markdown")) return <LiveMarkdownBody />;
+    if (toolId.includes("webp-to-png-jpg")) return <WebpToPngJpgBody />;
+    if (toolId.includes("add-watermark")) return <AddWatermarkBody />;
+    if (toolId.includes("palette-gen")) return <PaletteGenBody />;
+    if (toolId.includes("ico-generator")) return <IcoGeneratorBody />;
+    if (toolId.includes("unit-converter")) return <UnitConverterBody />;
+    if (toolId.includes("unix-timestamp")) return <UnixTimestampBody />;
+    if (toolId.includes("days-between")) return <DaysBetweenBody />;
+    if (toolId.includes("timezone-conv")) return <TimezoneConvBody />;
     
     // Default fallback
     return (
