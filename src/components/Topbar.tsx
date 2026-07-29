@@ -43,16 +43,16 @@ export function Topbar() {
       <div className="flex items-center gap-3 xl:gap-5">
         <button 
           onClick={toggleTheme}
-          className="hidden xl:block text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" 
+          className="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" 
           title="Toggle Dark Mode"
         >
           {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
         </button>
-        <button className="hidden xl:block text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors relative" title="Notifications">
+        <button className="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors relative" title="Notifications">
           <Bell className="w-5 h-5" />
           <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-sidebar"></span>
         </button>
-        <div className="hidden xl:block w-px h-6 bg-slate-200 dark:bg-border-subtle"></div>
+        <div className="hidden sm:block w-px h-6 bg-slate-200 dark:bg-border-subtle"></div>
         <div className="flex items-center gap-3">
           {user ? (
             <div 
