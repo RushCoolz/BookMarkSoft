@@ -190,8 +190,7 @@ export const toolCategories = [
       { title: "IMEI Checker", subtitle: "Check mobile device IMEI formats.", icon: <Smartphone className="w-12 h-12" />, iconColor: "text-emerald-500", rating: 4, isBeta: true },
       { title: "Battery Calc", subtitle: "Estimate device battery life.", icon: <Battery className="w-12 h-12" />, iconColor: "text-green-500", rating: 3, isBeta: true },
     ]
-  }
-
+  },
   {
     id: "electrical-electronics",
     title: "Electrical & Electronics",
