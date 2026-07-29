@@ -22,13 +22,15 @@ export function DnsLookupBody() {
     setRecords([]);
 
     try {
-      // Google DNS-over-HTTPS
+      // Cloudflare DNS-over-HTTPS
       // record types: A=1, AAAA=28, CNAME=5, MX=15, TXT=16, NS=2
       const typeMap: Record<string, number> = {
         "A": 1, "AAAA": 28, "CNAME": 5, "MX": 15, "TXT": 16, "NS": 2
       };
       
-      const res = await fetch(`https://dns.google.com/resolve?name=${cleanDomain}&type=${typeMap[recordType]}`);
+      const res = await fetch(`https://cloudflare-dns.com/dns-query?name=${cleanDomain}&type=${typeMap[recordType]}`, {
+        headers: { "Accept": "application/dns-json" }
+      });
       const data = await res.json();
       
       if (data.Status !== 0) {

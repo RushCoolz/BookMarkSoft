@@ -23,9 +23,11 @@ export function CountryInfoBody() {
         const resPartial = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(query.trim())}`);
         if (!resPartial.ok) throw new Error("Country not found");
         const data = await resPartial.json();
+        if (data.success === false) throw new Error(data.errors?.[0]?.message || "API Deprecated");
         setCountry(data[0]);
       } else {
         const data = await res.json();
+        if (data.success === false) throw new Error(data.errors?.[0]?.message || "API Deprecated. Needs API key.");
         setCountry(data[0]);
       }
     } catch (err: any) {
