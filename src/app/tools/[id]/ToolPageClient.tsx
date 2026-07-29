@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
+import { SeoContentBlock } from "@/components/SeoContentBlock";
 
 import { PasswordGeneratorBody } from "@/components/tools/PasswordGeneratorBody";
 import { JsonFormatterBody } from "@/components/tools/JsonFormatterBody";
@@ -172,6 +173,8 @@ export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
       <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-6 md:p-8 min-h-[60vh]">
         {renderToolBody()}
       </div>
+
+      <SeoContentBlock title={tool.title} subtitle={tool.subtitle} />
     </div>
   );
 }
