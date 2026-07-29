@@ -1,19 +1,65 @@
 "use client";
-import { ToolContainer, ToolMain, ToolSidebar } from "../ui/tool/ToolContainer";
+import { useState } from "react";
+import { Shrink } from "lucide-react";
+import { ToolContainer, ToolMain } from "../ui/tool/ToolContainer";
+import { ToolInput } from "../ui/tool/ToolInput";
+import { ToolOutput } from "../ui/tool/ToolOutput";
+import { ToolAction } from "../ui/tool/ToolAction";
 
 export function CssMinifierBody() {
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
+  const minifyCss = () => {
+    if (!input.trim()) {
+      setOutput("");
+      setError(null);
+      return;
+    }
+
+    try {
+      // Basic CSS minification algorithm
+      const minified = input
+        .replace(/\/\*[\s\S]*?\*\//g, '') // Remove comments
+        .replace(/\s+/g, ' ') // Collapse multiple whitespace to single space
+        .replace(/\s*([{}:;,>+~])\s*/g, '$1') // Remove spaces around syntax characters
+        .replace(/;\s*}/g, '}') // Remove trailing semicolon inside blocks
+        .trim();
+
+      setOutput(minified);
+      setError(null);
+    } catch (err: any) {
+      setError(err.message || "Failed to minify CSS");
+    }
+  };
+
   return (
-    <ToolContainer split="sidebar">
-      <ToolSidebar>
-        <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 p-5 rounded-2xl">
-          <h3 className="font-bold text-slate-700 dark:text-slate-300 mb-4">Settings</h3>
-          <p className="text-sm text-slate-500">Configure your tool here.</p>
-        </div>
-      </ToolSidebar>
+    <ToolContainer split="half">
       <ToolMain>
-        <div className="flex items-center justify-center h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-8 min-h-[300px]">
-          <p className="text-slate-400 dark:text-slate-500 font-medium text-center">UI Placeholder for<br/><strong className="text-xl text-slate-800 dark:text-slate-200 mt-2 block">CssMinifierBody</strong></p>
-        </div>
+        <ToolInput 
+          label="Raw CSS" 
+          value={input} 
+          onChange={setInput} 
+          onClear={() => { setInput(""); setOutput(""); setError(null); }}
+          placeholder="Paste your raw, uncompressed CSS here..." 
+        />
+        <ToolAction 
+          onClick={minifyCss} 
+          icon={<Shrink />}
+          className="mt-4 !bg-sky-500 !hover:bg-sky-600"
+        >
+          Minify CSS
+        </ToolAction>
+      </ToolMain>
+
+      <ToolMain>
+        <ToolOutput 
+          label="Minified Output" 
+          value={output} 
+          error={error}
+          placeholder="Minified code will appear here..." 
+        />
       </ToolMain>
     </ToolContainer>
   );
