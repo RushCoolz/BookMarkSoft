@@ -1,0 +1,81 @@
+"use client";
+import { useState } from "react";
+import { Bell, Moon, Sun, Star, Sparkles, Terminal, LogIn, Menu } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
+import { useTheme } from "@/context/ThemeContext";
+import { AuthModal } from "./AuthModal";
+import { ProfileModal } from "./ProfileModal";
+
+export function Topbar() {
+  const { user } = useAuth();
+  const { isDarkMode, toggleTheme } = useTheme();
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showProfileModal, setShowProfileModal] = useState(false);
+
+  return (
+    <>
+    <header className="h-16 bg-white dark:bg-sidebar flex items-center justify-between px-4 xl:px-8 fixed top-0 right-0 left-0 xl:left-64 z-40 border-b border-slate-100 dark:border-border-subtle transition-colors duration-300">
+      
+      {/* Mobile Branding (only visible when Sidebar is hidden) */}
+      <div className="flex xl:hidden items-center gap-3">
+        <button 
+          onClick={() => window.dispatchEvent(new Event('toggleMobileMenu'))}
+          className="p-1 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors"
+        >
+          <Menu className="w-6 h-6" />
+        </button>
+        <div className="flex items-center gap-2 font-bold text-lg text-slate-800 dark:text-slate-200 tracking-tight">
+          <img src="/logo.png" alt="Logo" className="w-6 h-6 object-contain mix-blend-multiply dark:mix-blend-normal dark:invert" />
+          BookmarkSoft
+        </div>
+      </div>
+
+      <nav className="hidden xl:flex items-center gap-8">
+        <a href="#" className="text-sm font-medium text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 border-b-2 border-blue-600 dark:border-blue-500 py-5 transition-colors">Dashboard</a>
+        <a href="#" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 py-5 flex items-center gap-1.5"><Star className="w-4 h-4"/> Favorites</a>
+        <a href="#" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 py-5 flex items-center gap-1.5"><Terminal className="w-4 h-4"/> API Docs</a>
+        <a href="#" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 py-5">Request a Tool</a>
+      </nav>
+      
+      <div className="flex items-center gap-3 xl:gap-5">
+        <button 
+          onClick={toggleTheme}
+          className="hidden xl:block text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" 
+          title="Toggle Dark Mode"
+        >
+          {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+        </button>
+        <button className="hidden xl:block text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors relative" title="Notifications">
+          <Bell className="w-5 h-5" />
+          <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-sidebar"></span>
+        </button>
+        <div className="hidden xl:block w-px h-6 bg-slate-200 dark:bg-border-subtle"></div>
+        <div className="flex items-center gap-3">
+          {user ? (
+            <div 
+              onClick={() => setShowProfileModal(true)}
+              className="w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/30 border-2 border-transparent overflow-hidden cursor-pointer hover:border-blue-500 transition-all shadow-sm"
+              title="Profile & Settings"
+            >
+              <img src={user.avatar} alt="User" className="w-full h-full object-cover" />
+            </div>
+          ) : (
+            <button 
+              onClick={() => setShowAuthModal(true)}
+              className="text-sm font-bold text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-3 py-2 flex items-center gap-1.5"
+            >
+              <LogIn className="w-4 h-4" /> Sign In
+            </button>
+          )}
+          <button className="hidden xl:flex bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-5 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm items-center gap-2">
+            <Sparkles className="w-4 h-4"/> Go Premium
+          </button>
+        </div>
+      </div>
+
+      {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)} />}
+      {showProfileModal && <ProfileModal onClose={() => setShowProfileModal(false)} />}
+    </header>
+    </>
+  );
+}

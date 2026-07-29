@@ -9,15 +9,31 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "crypto-js": "^4.2.0",
+    "dompurify": "^3.4.12",
+    "fast-xml-parser": "^5.10.1",
+    "js-beautify": "^2.0.3",
+    "lucide-react": "^1.27.0",
+    "marked": "^18.0.7",
     "next": "16.2.12",
+    "papaparse": "^5.5.4",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "sql-formatter": "^15.8.2",
+    "xml-formatter": "^3.7.0",
+    "yaml": "^2.9.0",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/crypto-js": "^4.2.2",
+    "@types/dompurify": "^3.0.5",
+    "@types/marked": "^5.0.2",
     "@types/node": "^20",
+    "@types/papaparse": "^5.5.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/zxcvbn": "^4.4.5",
     "eslint": "^9",
     "eslint-config-next": "16.2.12",
     "tailwindcss": "^4",
