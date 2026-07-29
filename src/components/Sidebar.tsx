@@ -1,11 +1,14 @@
 "use client";
 import { Terminal, FileText, Image as ImageIcon, Shield, Calculator, Settings, Search, X, LayoutDashboard, Star, FileCode2, MessageSquarePlus, HeartPulse, Share2, Smartphone, Dices, Network, Banknote } from "lucide-react";
 import { useState, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
 export function Sidebar() {
   const [activeSection, setActiveSection] = useState("developer-code");
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   const navItems = [
     { name: "Developer & Code", icon: Terminal, id: "developer-code" },
@@ -22,6 +25,9 @@ export function Sidebar() {
 
   useEffect(() => {
     const handleScroll = () => {
+      // Only compute scroll on the homepage
+      if (pathname !== "/") return;
+
       const sections = navItems.map(item => document.getElementById(item.id));
       const scrollPosition = window.scrollY + 300; // offset for hero section
 
@@ -44,14 +50,22 @@ export function Sidebar() {
   }, []);
 
   const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      const y = element.getBoundingClientRect().top + window.scrollY - 100;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-    // Close sidebar on mobile after clicking
-    setIsOpen(false);
+      e.preventDefault();
+      
+      if (pathname === "/") {
+        // We are on homepage, smooth scroll to section
+        const element = document.getElementById(id);
+        if (element) {
+          const y = element.getBoundingClientRect().top + window.scrollY - 100;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      } else {
+        // Not on homepage, navigate to homepage with hash
+        router.push(`/#${id}`);
+      }
+      
+      // Close sidebar on mobile after clicking
+      setIsOpen(false);
   };
 
   return (
@@ -93,18 +107,18 @@ export function Sidebar() {
       {/* Top Navigation links for Mobile only */}
       <div className="xl:hidden px-4 mb-2 pb-4 border-b border-border-subtle space-y-1">
         <p className="px-4 text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">Main Menu</p>
-        <a href="#" className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 transition-colors">
+        <Link href="/" className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 transition-colors">
           <LayoutDashboard className="w-4 h-4" /> Dashboard
-        </a>
-        <a href="#" className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200 transition-colors">
+        </Link>
+        <Link href="/favorites" className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200 transition-colors">
           <Star className="w-4 h-4" /> Favorites
-        </a>
-        <a href="#" className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200 transition-colors">
+        </Link>
+        <Link href="/api-docs" className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200 transition-colors">
           <FileCode2 className="w-4 h-4" /> API Docs
-        </a>
-        <a href="#" className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200 transition-colors">
+        </Link>
+        <Link href="/request" className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200 transition-colors">
           <MessageSquarePlus className="w-4 h-4" /> Request a Tool
-        </a>
+        </Link>
       </div>
 
       <nav className="flex-1 overflow-y-auto py-2 px-4 space-y-1">
@@ -112,10 +126,10 @@ export function Sidebar() {
         {navItems.map((item) => (
           <a
             key={item.id}
-            href={`#${item.id}`}
+            href={`/#${item.id}`}
             onClick={(e) => scrollTo(e, item.id)}
             className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-              activeSection === item.id
+              activeSection === item.id && pathname === "/"
                 ? "text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-500/10"
                 : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200"
             }`}

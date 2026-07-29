@@ -1,4 +1,6 @@
+"use client";
 import { Star, ArrowUpRight } from "lucide-react";
+import { useFavorites } from "@/context/FavoritesContext";
 
 interface ToolCardProps {
   title: string;
@@ -7,11 +9,21 @@ interface ToolCardProps {
   iconColor: string;
   rating: number;
   isBeta?: boolean;
+  id: string;
   isNew?: boolean;
   onClick?: () => void;
 }
 
-export function ToolCard({ title, subtitle, icon, iconColor, rating, isBeta, isNew, onClick }: ToolCardProps) {
+export function ToolCard({ title, subtitle, icon, iconColor, rating, isBeta, isNew, id, onClick }: ToolCardProps) {
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const favorite = isFavorite(id);
+
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleFavorite(id);
+  };
+
   return (
     <div onClick={onClick} className="group relative bg-white dark:bg-slate-900/50 p-4 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 cursor-pointer flex flex-col h-full hover:-translate-y-1">
       <div className="absolute top-3 left-3 sm:top-4 sm:left-4 flex items-center gap-2">
@@ -26,6 +38,18 @@ export function ToolCard({ title, subtitle, icon, iconColor, rating, isBeta, isN
           </span>
         )}
       </div>
+
+      {/* Favorite Button */}
+      <button
+        onClick={handleFavoriteClick}
+        className={`absolute top-3 right-3 sm:top-4 sm:right-4 p-2 rounded-full transition-all duration-200 z-10 
+          ${favorite 
+            ? 'bg-orange-50 dark:bg-orange-900/30 text-orange-500 opacity-100 scale-110' 
+            : 'text-slate-300 dark:text-slate-600 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/30 opacity-0 group-hover:opacity-100'
+          }`}
+      >
+        <Star className={`w-4 h-4 ${favorite ? 'fill-current' : ''}`} />
+      </button>
       
       {/* Bottom right hover icon */}
       <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 text-slate-300 dark:text-slate-600 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">

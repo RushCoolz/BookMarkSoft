@@ -8,6 +8,7 @@ import { AuthProvider } from "@/context/AuthContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { CookieConsent } from "@/components/CookieConsent";
 import { AnalyticsProvider } from "@/components/AnalyticsProvider";
+import { FavoritesProvider } from "@/context/FavoritesContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -36,15 +37,17 @@ export default function RootLayout({
         <AnalyticsProvider gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
         <ThemeProvider>
           <AuthProvider>
-            <Sidebar />
-            <Topbar />
-            <main className="xl:ml-64 min-h-screen px-4 pb-4 pt-20 xl:px-8 xl:pb-8 xl:pt-24 flex flex-col">
-              <div className="max-w-7xl mx-auto flex-1 w-full">
-                {children}
-              </div>
-              <Footer />
-            </main>
-            <CookieConsent />
+            <FavoritesProvider>
+              <Sidebar />
+              <Topbar />
+              <main className="xl:ml-64 min-h-screen px-4 pb-4 pt-20 xl:px-8 xl:pb-8 xl:pt-24 flex flex-col">
+                <div className="max-w-7xl mx-auto flex-1 w-full">
+                  {children}
+                </div>
+                <Footer />
+              </main>
+              <CookieConsent />
+            </FavoritesProvider>
           </AuthProvider>
         </ThemeProvider>
       </body>

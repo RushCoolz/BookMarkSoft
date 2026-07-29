@@ -32,10 +32,10 @@ export function Topbar() {
       </div>
 
       <nav className="hidden xl:flex items-center gap-8">
-        <a href="#" className="text-sm font-medium text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 border-b-2 border-blue-600 dark:border-blue-500 py-5 transition-colors">Dashboard</a>
-        <a href="#" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 py-5 flex items-center gap-1.5"><Star className="w-4 h-4"/> Favorites</a>
-        <a href="#" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 py-5 flex items-center gap-1.5"><Terminal className="w-4 h-4"/> API Docs</a>
-        <a href="#" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 py-5">Request a Tool</a>
+        <Link href="/" className="text-sm font-medium text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 border-b-2 border-blue-600 dark:border-blue-500 py-5 transition-colors">Dashboard</Link>
+        <Link href="/favorites" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 py-5 flex items-center gap-1.5"><Star className="w-4 h-4"/> Favorites</Link>
+        <Link href="/api-docs" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 py-5 flex items-center gap-1.5"><Terminal className="w-4 h-4"/> API Docs</Link>
+        <Link href="/request" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 py-5">Request a Tool</Link>
       </nav>
       
       <div className="flex items-center gap-3 xl:gap-5">

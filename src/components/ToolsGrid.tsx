@@ -41,7 +41,7 @@ export function ToolsGrid() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-5">
             {category.tools.map((tool, index) => (
               <Link href={`/tools/${generateToolId(tool.title)}`} key={index} className="block hover:no-underline">
-                <ToolCard {...tool} />
+                <ToolCard {...tool} id={generateToolId(tool.title)} />
               </Link>
             ))}
           </div>
