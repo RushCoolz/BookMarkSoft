@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { ToolContainer, ToolMain } from "./SharedComponents";
+import { ToolContainer, ToolMain } from "../ui/tool/ToolContainer";
 import { Send, TerminalSquare, AlertCircle } from "lucide-react";
 
 export function ApiTesterBody() {

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { ToolContainer, ToolMain } from "./SharedComponents";
+import { ToolContainer, ToolMain } from "../ui/tool/ToolContainer";
 import { Search, Cloud, Droplets, Wind, MapPin } from "lucide-react";
 
 export function WeatherDashboardBody() {

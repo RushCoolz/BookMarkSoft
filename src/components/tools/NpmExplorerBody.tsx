@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { ToolContainer, ToolMain } from "./SharedComponents";
+import { ToolContainer, ToolMain } from "../ui/tool/ToolContainer";
 import { Search, Package, Download, Terminal } from "lucide-react";
 
 export function NpmExplorerBody() {

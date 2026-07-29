@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { ToolContainer, ToolMain } from "./SharedComponents";
+import { ToolContainer, ToolMain } from "../ui/tool/ToolContainer";
 import { RefreshCw, TrendingUp, TrendingDown, Bitcoin } from "lucide-react";
 
 interface CryptoData {

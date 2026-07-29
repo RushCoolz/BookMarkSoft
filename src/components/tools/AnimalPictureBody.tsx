@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { ToolContainer, ToolMain } from "./SharedComponents";
+import { ToolContainer, ToolMain } from "../ui/tool/ToolContainer";
 import { Camera, RefreshCw, Download } from "lucide-react";
 
 export function AnimalPictureBody() {

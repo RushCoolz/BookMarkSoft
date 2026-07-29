@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { ToolContainer, ToolMain } from "./SharedComponents";
+import { ToolContainer, ToolMain } from "../ui/tool/ToolContainer";
 import { Quote, RefreshCw, Copy, Check } from "lucide-react";
 
 export function QuoteGeneratorBody() {
