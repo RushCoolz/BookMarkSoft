@@ -1,14 +1,20 @@
 "use client";
 import { useState } from "react";
-import { Bell, Moon, Sun, Star, Terminal, Menu, Search, ArrowLeft } from "lucide-react";
+import { Bell, Moon, Sun, Star, Sparkles, Terminal, LogIn, Menu, Search, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/context/ThemeContext";
 import { usePathname, useRouter } from "next/navigation";
+import { AuthModal } from "./AuthModal";
+import { ProfileModal } from "./ProfileModal";
 
 export function Topbar() {
+  const { user } = useAuth();
   const { isDarkMode, toggleTheme } = useTheme();
   const pathname = usePathname();
   const router = useRouter();
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showProfileModal, setShowProfileModal] = useState(false);
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
 
   const handleSearch = (val: string) => {
@@ -96,8 +102,30 @@ export function Topbar() {
         </button>
         <div className="hidden sm:block w-px h-6 bg-slate-200 dark:bg-border-subtle mx-1"></div>
         <div className="flex items-center gap-2 sm:gap-3">
+          {user ? (
+            <div 
+              onClick={() => setShowProfileModal(true)}
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-blue-100 dark:bg-blue-900/30 border-2 border-transparent overflow-hidden cursor-pointer hover:border-blue-500 transition-all shadow-sm"
+              title="Profile & Settings"
+            >
+              <img src={user.avatar} alt="User" className="w-full h-full object-cover" />
+            </div>
+          ) : (
+            <button 
+              onClick={() => setShowAuthModal(true)}
+              className="text-sm font-bold text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-2 sm:px-3 py-2 flex items-center gap-1.5"
+            >
+              <LogIn className="w-4 h-4 sm:w-5 sm:h-5" /> <span className="hidden sm:inline">Sign In</span>
+            </button>
+          )}
+          <button className="hidden xl:flex bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-5 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm items-center gap-2">
+            <Sparkles className="w-4 h-4"/> Go Premium
+          </button>
         </div>
       </div>
+
+      {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)} />}
+      {showProfileModal && <ProfileModal onClose={() => setShowProfileModal(false)} />}
     </header>
     </>
   );
