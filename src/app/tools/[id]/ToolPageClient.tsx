@@ -120,6 +120,10 @@ const EmailSignatureGenBody = dynamic(() => import('@/components/tools/EmailSign
 const LocalKanbanBody = dynamic(() => import('@/components/tools/LocalKanbanBody').then(mod => mod.LocalKanbanBody), { ssr: false });
 const CronJobGenBody = dynamic(() => import('@/components/tools/CronJobGenBody').then(mod => mod.CronJobGenBody), { ssr: false });
 
+const ScreenRecorderBody = dynamic(() => import('@/components/tools/ScreenRecorderBody').then(mod => mod.ScreenRecorderBody), { ssr: false });
+const WebcamSnapshotBody = dynamic(() => import('@/components/tools/WebcamSnapshotBody').then(mod => mod.WebcamSnapshotBody), { ssr: false });
+const VoiceRecorderBody = dynamic(() => import('@/components/tools/VoiceRecorderBody').then(mod => mod.VoiceRecorderBody), { ssr: false });
+
 interface ToolPageClientProps {
   tool: {
     title: string;
@@ -255,6 +259,11 @@ export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
     if (toolId.includes("email-signature-gen")) return <EmailSignatureGenBody />;
     if (toolId.includes("local-kanban")) return <LocalKanbanBody />;
     if (toolId.includes("cron-job-gen")) return <CronJobGenBody />;
+
+    // Phase 3 Media Capture
+    if (toolId.includes("screen-recorder")) return <ScreenRecorderBody />;
+    if (toolId.includes("webcam-snapshot")) return <WebcamSnapshotBody />;
+    if (toolId.includes("voice-recorder")) return <VoiceRecorderBody />;
 
     // Default fallback
     return (

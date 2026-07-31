@@ -11,7 +11,7 @@ import {
   Calculator as CalcIcon, LineChart, MoveHorizontal,
   HeartPulse, Share2, Smartphone, Dices, FileSpreadsheet, Presentation, Flame, PieChart, Wine, Tags, Video, Minimize2, MonitorSmartphone, Info, Battery
 } from "lucide-react";
-import { Bitcoin, Earth, MapPin, CalendarDays as CalendarDays2, BookOpen, GitBranch, Package, TerminalSquare, Quote, Smile, Camera, Timer, Mail, Kanban } from "lucide-react";
+import { Bitcoin, Earth, MapPin, CalendarDays as CalendarDays2, BookOpen, GitBranch, Package, TerminalSquare, Quote, Smile, Camera, Timer, Mail, Kanban, Mic } from "lucide-react";
 
 import { Calculator as Calc2, Zap, Cable, Car, CarFront, Fuel, ScanBarcode, Wind, Leaf, Sun, Shield } from "lucide-react";
 import React from "react";
@@ -97,6 +97,15 @@ export const toolCategories = [
       { title: "Palette Gen", subtitle: "Generate beautiful color palettes.", icon: <Paintbrush className="w-12 h-12" />, iconColor: "text-rose-400", rating: 4, isBeta: false },
       { title: "ICO Generator", subtitle: "Convert images to Favicon/ICO format.", icon: <ImageIcon className="w-12 h-12" />, iconColor: "text-amber-500", rating: 4, isBeta: false },
       { title: "Base64 Image", subtitle: "Convert images to Base64 strings.", icon: <Binary className="w-12 h-12" />, iconColor: "text-purple-500", rating: 3, isBeta: false },
+    ]
+  },
+  {
+    id: "media-capture",
+    title: "Media Capture",
+    tools: [
+      { title: "Screen Recorder", subtitle: "Record your screen directly from the browser.", icon: <Video className="w-12 h-12" />, iconColor: "text-red-500", rating: 5, isBeta: true, isNew: true },
+      { title: "Webcam Snapshot", subtitle: "Take pictures using your webcam.", icon: <Camera className="w-12 h-12" />, iconColor: "text-teal-500", rating: 5, isBeta: true, isNew: true },
+      { title: "Voice Recorder", subtitle: "Record audio from your microphone.", icon: <Mic className="w-12 h-12" />, iconColor: "text-purple-500", rating: 5, isBeta: true, isNew: true },
     ]
   },
   {
