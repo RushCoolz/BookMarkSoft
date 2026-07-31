@@ -112,6 +112,14 @@ const CssClipPathBody = dynamic(() => import('@/components/tools/CssClipPathBody
 const SvgBlobGenBody = dynamic(() => import('@/components/tools/SvgBlobGenBody').then(mod => mod.SvgBlobGenBody), { ssr: false });
 const TypeScaleCalcBody = dynamic(() => import('@/components/tools/TypeScaleCalcBody').then(mod => mod.TypeScaleCalcBody), { ssr: false });
 
+const UtmLinkBuilderBody = dynamic(() => import('@/components/tools/UtmLinkBuilderBody').then(mod => mod.UtmLinkBuilderBody), { ssr: false });
+const SlugConverterBody = dynamic(() => import('@/components/tools/SlugConverterBody').then(mod => mod.SlugConverterBody), { ssr: false });
+const PomodoroTimerBody = dynamic(() => import('@/components/tools/PomodoroTimerBody').then(mod => mod.PomodoroTimerBody), { ssr: false });
+const SeoSerpPreviewBody = dynamic(() => import('@/components/tools/SeoSerpPreviewBody').then(mod => mod.SeoSerpPreviewBody), { ssr: false });
+const EmailSignatureGenBody = dynamic(() => import('@/components/tools/EmailSignatureGenBody').then(mod => mod.EmailSignatureGenBody), { ssr: false });
+const LocalKanbanBody = dynamic(() => import('@/components/tools/LocalKanbanBody').then(mod => mod.LocalKanbanBody), { ssr: false });
+const CronJobGenBody = dynamic(() => import('@/components/tools/CronJobGenBody').then(mod => mod.CronJobGenBody), { ssr: false });
+
 interface ToolPageClientProps {
   tool: {
     title: string;
@@ -238,6 +246,15 @@ export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
     if (toolId.includes("css-clip-path")) return <CssClipPathBody />;
     if (toolId.includes("svg-blob-gen")) return <SvgBlobGenBody />;
     if (toolId.includes("type-scale-calc")) return <TypeScaleCalcBody />;
+
+    // Phase 2 Marketing & Productivity
+    if (toolId.includes("utm-link-builder")) return <UtmLinkBuilderBody />;
+    if (toolId.includes("slug-converter")) return <SlugConverterBody />;
+    if (toolId.includes("pomodoro-timer")) return <PomodoroTimerBody />;
+    if (toolId.includes("seo-serp-preview")) return <SeoSerpPreviewBody />;
+    if (toolId.includes("email-signature-gen")) return <EmailSignatureGenBody />;
+    if (toolId.includes("local-kanban")) return <LocalKanbanBody />;
+    if (toolId.includes("cron-job-gen")) return <CronJobGenBody />;
 
     // Default fallback
     return (

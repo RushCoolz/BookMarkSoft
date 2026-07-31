@@ -11,7 +11,7 @@ import {
   Calculator as CalcIcon, LineChart, MoveHorizontal,
   HeartPulse, Share2, Smartphone, Dices, FileSpreadsheet, Presentation, Flame, PieChart, Wine, Tags, Video, Minimize2, MonitorSmartphone, Info, Battery
 } from "lucide-react";
-import { Bitcoin, Earth, MapPin, CalendarDays as CalendarDays2, BookOpen, GitBranch, Package, TerminalSquare, Quote, Smile, Camera } from "lucide-react";
+import { Bitcoin, Earth, MapPin, CalendarDays as CalendarDays2, BookOpen, GitBranch, Package, TerminalSquare, Quote, Smile, Camera, Timer, Mail, Kanban } from "lucide-react";
 
 import { Calculator as Calc2, Zap, Cable, Car, CarFront, Fuel, ScanBarcode, Wind, Leaf, Sun, Shield } from "lucide-react";
 import React from "react";
@@ -166,6 +166,19 @@ export const toolCategories = [
       { title: "Robots.txt Gen", subtitle: "Generate a robots.txt file.", icon: <FileCode2 className="w-12 h-12" />, iconColor: "text-slate-600", rating: 4, isBeta: true },
       { title: "Line Break Gen", subtitle: "Instagram line break generator.", icon: <Edit3 className="w-12 h-12" />, iconColor: "text-pink-500", rating: 4, isBeta: true },
       { title: "Tweet to Image", subtitle: "Convert tweets into beautiful images.", icon: <ImagePlus className="w-12 h-12" />, iconColor: "text-sky-400", rating: 5, isBeta: true },
+    ]
+  },
+  {
+    id: "marketing-productivity",
+    title: "Marketing & Productivity",
+    tools: [
+      { title: "UTM Link Builder", subtitle: "Generate trackable campaign links.", icon: <Link className="w-12 h-12" />, iconColor: "text-blue-500", rating: 5, isBeta: true, isNew: true },
+      { title: "Slug Converter", subtitle: "Convert text to URL-friendly slugs.", icon: <Type className="w-12 h-12" />, iconColor: "text-emerald-500", rating: 5, isBeta: true, isNew: true },
+      { title: "Pomodoro Timer", subtitle: "Focus timer with custom intervals.", icon: <Timer className="w-12 h-12" />, iconColor: "text-rose-500", rating: 5, isBeta: true, isNew: true },
+      { title: "SEO SERP Preview", subtitle: "Preview how your site looks on Google.", icon: <Search className="w-12 h-12" />, iconColor: "text-indigo-500", rating: 5, isBeta: true, isNew: true },
+      { title: "Email Signature Gen", subtitle: "Create HTML email signatures.", icon: <Mail className="w-12 h-12" />, iconColor: "text-purple-500", rating: 5, isBeta: true, isNew: true },
+      { title: "Local Kanban", subtitle: "Simple client-side task board.", icon: <Kanban className="w-12 h-12" />, iconColor: "text-sky-500", rating: 5, isBeta: true, isNew: true },
+      { title: "Cron Job Gen", subtitle: "Generate crontab scheduling expressions.", icon: <Clock className="w-12 h-12" />, iconColor: "text-slate-700", rating: 5, isBeta: true, isNew: true },
     ]
   },
   {
