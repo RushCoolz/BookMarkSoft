@@ -1,3 +1,4 @@
+import { ClerkProvider } from '@clerk/nextjs'
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -64,24 +65,26 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
-        <AnalyticsProvider gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} clarityId={process.env.NEXT_PUBLIC_CLARITY_ID || ''} />
-        <ThemeProvider>
-          <AuthProvider>
-            <FavoritesProvider>
-              <Sidebar />
-              <Topbar />
-              <main className="xl:ml-64 min-h-screen px-4 pb-4 pt-20 xl:px-8 xl:pb-8 xl:pt-24 flex flex-col">
-                <div className="max-w-7xl mx-auto flex-1 w-full">
-                  {children}
-                </div>
-                <Footer />
-              </main>
-            </FavoritesProvider>
-          </AuthProvider>
-        </ThemeProvider>
-        <CookieConsent />
-      </body>
+      <ClerkProvider>
+        <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
+          <AnalyticsProvider gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} clarityId={process.env.NEXT_PUBLIC_CLARITY_ID || ''} />
+          <ThemeProvider>
+            <AuthProvider>
+              <FavoritesProvider>
+                <Sidebar />
+                <Topbar />
+                <main className="xl:ml-64 min-h-screen px-4 pb-4 pt-20 xl:px-8 xl:pb-8 xl:pt-24 flex flex-col">
+                  <div className="max-w-7xl mx-auto flex-1 w-full">
+                    {children}
+                  </div>
+                  <Footer />
+                </main>
+              </FavoritesProvider>
+            </AuthProvider>
+          </ThemeProvider>
+          <CookieConsent />
+        </body>
+      </ClerkProvider>
     </html>
   );
 }
