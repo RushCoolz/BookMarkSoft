@@ -11,6 +11,7 @@ const Base64ToolBody = dynamic(() => import('@/components/tools/Base64ToolBody')
 const UrlEncodeToolBody = dynamic(() => import('@/components/tools/UrlEncodeToolBody').then(mod => mod.UrlEncodeToolBody), { ssr: false });
 const UuidGeneratorBody = dynamic(() => import('@/components/tools/UuidGeneratorBody').then(mod => mod.UuidGeneratorBody), { ssr: false });
 const MarkdownToHtmlBody = dynamic(() => import('@/components/tools/MarkdownToHtmlBody').then(mod => mod.MarkdownToHtmlBody), { ssr: false });
+const JsFormatterBody = dynamic(() => import('@/components/tools/JsFormatterBody').then(mod => mod.JsFormatterBody), { ssr: false });
 const HtmlFormatterBody = dynamic(() => import('@/components/tools/HtmlFormatterBody').then(mod => mod.HtmlFormatterBody), { ssr: false });
 const CssFormatterBody = dynamic(() => import('@/components/tools/CssFormatterBody').then(mod => mod.CssFormatterBody), { ssr: false });
 const XmlFormatterBody = dynamic(() => import('@/components/tools/XmlFormatterBody').then(mod => mod.XmlFormatterBody), { ssr: false });
@@ -151,6 +152,7 @@ export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
     if (toolId.includes("url-encode")) return <UrlEncodeToolBody />;
     if (toolId.includes("uuid")) return <UuidGeneratorBody />;
     if (toolId.includes("markdown")) return <MarkdownToHtmlBody />;
+    if (toolId.includes("js-formatter")) return <JsFormatterBody />;
     if (toolId.includes("html-formatter")) return <HtmlFormatterBody />;
     if (toolId.includes("css-formatter")) return <CssFormatterBody />;
     if (toolId.includes("xml-formatter")) return <XmlFormatterBody />;
