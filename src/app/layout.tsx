@@ -8,6 +8,7 @@ import { AuthProvider } from "@/context/AuthContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { AnalyticsProvider } from "@/components/AnalyticsProvider";
 import { FavoritesProvider } from "@/context/FavoritesContext";
+import { CookieConsent } from "@/components/CookieConsent";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -48,7 +49,7 @@ export default function RootLayout({
       className={`${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
-        <AnalyticsProvider gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
+        <AnalyticsProvider gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} clarityId={process.env.NEXT_PUBLIC_CLARITY_ID || ''} />
         <ThemeProvider>
           <AuthProvider>
             <FavoritesProvider>
@@ -63,6 +64,7 @@ export default function RootLayout({
             </FavoritesProvider>
           </AuthProvider>
         </ThemeProvider>
+        <CookieConsent />
       </body>
     </html>
   );
