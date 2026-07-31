@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { marked } from "marked";
-import * as DOMPurify from "dompurify";
+import DOMPurify from "dompurify";
 import { Copy, Check, Eye, Code } from "lucide-react";
 import { ToolContainer, ToolMain } from "../ui/tool/ToolContainer";
 import { ToolInput } from "../ui/tool/ToolInput";
