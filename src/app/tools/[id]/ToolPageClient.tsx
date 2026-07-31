@@ -124,6 +124,10 @@ const ScreenRecorderBody = dynamic(() => import('@/components/tools/ScreenRecord
 const WebcamSnapshotBody = dynamic(() => import('@/components/tools/WebcamSnapshotBody').then(mod => mod.WebcamSnapshotBody), { ssr: false });
 const VoiceRecorderBody = dynamic(() => import('@/components/tools/VoiceRecorderBody').then(mod => mod.VoiceRecorderBody), { ssr: false });
 
+const SqliteViewerBody = dynamic(() => import('@/components/tools/SqliteViewerBody').then(mod => mod.SqliteViewerBody), { ssr: false });
+const TextToSpeechBody = dynamic(() => import('@/components/tools/TextToSpeechBody').then(mod => mod.TextToSpeechBody), { ssr: false });
+const ImageFilterStudioBody = dynamic(() => import('@/components/tools/ImageFilterStudioBody').then(mod => mod.ImageFilterStudioBody), { ssr: false });
+
 interface ToolPageClientProps {
   tool: {
     title: string;
@@ -264,6 +268,11 @@ export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
     if (toolId.includes("screen-recorder")) return <ScreenRecorderBody />;
     if (toolId.includes("webcam-snapshot")) return <WebcamSnapshotBody />;
     if (toolId.includes("voice-recorder")) return <VoiceRecorderBody />;
+
+    // Phase 4 Advanced Computation
+    if (toolId.includes("sqlite-viewer")) return <SqliteViewerBody />;
+    if (toolId.includes("text-to-speech")) return <TextToSpeechBody />;
+    if (toolId.includes("image-filter-studio")) return <ImageFilterStudioBody />;
 
     // Default fallback
     return (

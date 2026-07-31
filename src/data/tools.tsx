@@ -11,7 +11,7 @@ import {
   Calculator as CalcIcon, LineChart, MoveHorizontal,
   HeartPulse, Share2, Smartphone, Dices, FileSpreadsheet, Presentation, Flame, PieChart, Wine, Tags, Video, Minimize2, MonitorSmartphone, Info, Battery
 } from "lucide-react";
-import { Bitcoin, Earth, MapPin, CalendarDays as CalendarDays2, BookOpen, GitBranch, Package, TerminalSquare, Quote, Smile, Camera, Timer, Mail, Kanban, Mic } from "lucide-react";
+import { Bitcoin, Earth, MapPin, CalendarDays as CalendarDays2, BookOpen, GitBranch, Package, TerminalSquare, Quote, Smile, Camera, Timer, Mail, Kanban, Mic, DatabaseZap, AudioLines, ImagePlus as ImagePlus2 } from "lucide-react";
 
 import { Calculator as Calc2, Zap, Cable, Car, CarFront, Fuel, ScanBarcode, Wind, Leaf, Sun, Shield } from "lucide-react";
 import React from "react";
@@ -106,6 +106,15 @@ export const toolCategories = [
       { title: "Screen Recorder", subtitle: "Record your screen directly from the browser.", icon: <Video className="w-12 h-12" />, iconColor: "text-red-500", rating: 5, isBeta: true, isNew: true },
       { title: "Webcam Snapshot", subtitle: "Take pictures using your webcam.", icon: <Camera className="w-12 h-12" />, iconColor: "text-teal-500", rating: 5, isBeta: true, isNew: true },
       { title: "Voice Recorder", subtitle: "Record audio from your microphone.", icon: <Mic className="w-12 h-12" />, iconColor: "text-purple-500", rating: 5, isBeta: true, isNew: true },
+    ]
+  },
+  {
+    id: "advanced-computation",
+    title: "Advanced Computation",
+    tools: [
+      { title: "SQLite Viewer", subtitle: "Open and query SQLite databases in the browser.", icon: <DatabaseZap className="w-12 h-12" />, iconColor: "text-indigo-500", rating: 5, isBeta: true, isNew: true },
+      { title: "Text-to-Speech", subtitle: "Convert text to audio using native Neural TTS.", icon: <AudioLines className="w-12 h-12" />, iconColor: "text-pink-500", rating: 5, isBeta: true, isNew: true },
+      { title: "Image Filter Studio", subtitle: "Apply complex visual filters to high-res images.", icon: <ImagePlus2 className="w-12 h-12" />, iconColor: "text-sky-500", rating: 5, isBeta: true, isNew: true },
     ]
   },
   {
