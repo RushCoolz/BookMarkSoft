@@ -46,6 +46,18 @@ export const toolCategories = [
       { title: "GitHub Profile", subtitle: "Find GitHub user data and repos.", icon: <GitBranch className="w-12 h-12" />, iconColor: "text-slate-800 dark:text-slate-200", rating: 5, isBeta: false, isNew: true },
       { title: "NPM Explorer", subtitle: "Search and explore NPM packages.", icon: <Package className="w-12 h-12" />, iconColor: "text-red-500", rating: 5, isBeta: false, isNew: true },
       { title: "API Tester", subtitle: "Test REST API endpoints directly.", icon: <TerminalSquare className="w-12 h-12" />, iconColor: "text-orange-500", rating: 5, isBeta: false, isNew: true },
+      { title: "JWT Decoder", subtitle: "Decode JSON Web Tokens securely.", icon: <Key className="w-12 h-12" />, iconColor: "text-emerald-500", rating: 5, isBeta: true, isNew: true },
+    ]
+  },
+  {
+    id: "ui-design-generators",
+    title: "UI & Design Generators",
+    tools: [
+      { title: "Glassmorphism Gen", subtitle: "Generate frosted glass UI CSS.", icon: <Layers className="w-12 h-12" />, iconColor: "text-cyan-400", rating: 5, isBeta: true, isNew: true },
+      { title: "Box Shadow Gen", subtitle: "Create smooth CSS box shadows.", icon: <LayoutTemplate className="w-12 h-12" />, iconColor: "text-indigo-500", rating: 5, isBeta: true, isNew: true },
+      { title: "CSS Clip Path", subtitle: "Draw and export CSS polygon shapes.", icon: <Scissors className="w-12 h-12" />, iconColor: "text-pink-500", rating: 5, isBeta: true, isNew: true },
+      { title: "SVG Blob Gen", subtitle: "Generate organic SVG background blobs.", icon: <Paintbrush className="w-12 h-12" />, iconColor: "text-rose-500", rating: 5, isBeta: true, isNew: true },
+      { title: "Type Scale Calc", subtitle: "Responsive typography scale generator.", icon: <Type className="w-12 h-12" />, iconColor: "text-slate-800 dark:text-slate-200", rating: 5, isBeta: true, isNew: true },
     ]
   },
   {

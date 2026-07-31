@@ -105,7 +105,12 @@ const WhatIsMyIpBody = dynamic(() => import('@/components/tools/WhatIsMyIpBody')
 const BrowserFingerprintBody = dynamic(() => import('@/components/tools/BrowserFingerprintBody').then(mod => mod.BrowserFingerprintBody), { ssr: false });
 const MacroCalculatorBody = dynamic(() => import('@/components/tools/MacroCalculatorBody').then(mod => mod.MacroCalculatorBody), { ssr: false });
 const BmiCalculatorBody = dynamic(() => import('@/components/tools/BmiCalculatorBody').then(mod => mod.BmiCalculatorBody), { ssr: false });
-
+const JwtDecoderBody = dynamic(() => import('@/components/tools/JwtDecoderBody').then(mod => mod.JwtDecoderBody), { ssr: false });
+const GlassmorphismGenBody = dynamic(() => import('@/components/tools/GlassmorphismGenBody').then(mod => mod.GlassmorphismGenBody), { ssr: false });
+const BoxShadowGenBody = dynamic(() => import('@/components/tools/BoxShadowGenBody').then(mod => mod.BoxShadowGenBody), { ssr: false });
+const CssClipPathBody = dynamic(() => import('@/components/tools/CssClipPathBody').then(mod => mod.CssClipPathBody), { ssr: false });
+const SvgBlobGenBody = dynamic(() => import('@/components/tools/SvgBlobGenBody').then(mod => mod.SvgBlobGenBody), { ssr: false });
+const TypeScaleCalcBody = dynamic(() => import('@/components/tools/TypeScaleCalcBody').then(mod => mod.TypeScaleCalcBody), { ssr: false });
 
 interface ToolPageClientProps {
   tool: {
@@ -225,6 +230,14 @@ export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
     if (toolId.includes("is-it-down")) return <IsItDownBody />;
     if (toolId.includes("what-is-my-ip")) return <WhatIsMyIpBody />;
     if (toolId.includes("browser-fingerprint")) return <BrowserFingerprintBody />;
+
+    // Phase 1 UI Generators
+    if (toolId.includes("jwt-decoder")) return <JwtDecoderBody />;
+    if (toolId.includes("glassmorphism-gen")) return <GlassmorphismGenBody />;
+    if (toolId.includes("box-shadow-gen")) return <BoxShadowGenBody />;
+    if (toolId.includes("css-clip-path")) return <CssClipPathBody />;
+    if (toolId.includes("svg-blob-gen")) return <SvgBlobGenBody />;
+    if (toolId.includes("type-scale-calc")) return <TypeScaleCalcBody />;
 
     // Default fallback
     return (
