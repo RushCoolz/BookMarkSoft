@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import zxcvbn from "zxcvbn";
 import { ShieldAlert, ShieldCheck, Clock, AlertTriangle } from "lucide-react";
+const zxcvbn = require("zxcvbn");
 import { ToolContainer, ToolMain } from "../ui/tool/ToolContainer";
 
 export function StrengthCheckerBody() {

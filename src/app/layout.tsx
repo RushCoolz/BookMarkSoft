@@ -45,27 +45,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} h-full antialiased`}
-      suppressHydrationWarning
-    >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.documentElement.classList.add('dark');
-                } else {
-                  document.documentElement.classList.remove('dark');
-                }
-              } catch (_) {}
-            `,
-          }}
-        />
-      </head>
-      <ClerkProvider>
+    <ClerkProvider>
+      <html
+        lang="en"
+        className={`${inter.variable} h-full antialiased`}
+        suppressHydrationWarning
+      >
+        <head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                try {
+                  if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (_) {}
+              `,
+            }}
+          />
+        </head>
         <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
           <AnalyticsProvider gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} clarityId={process.env.NEXT_PUBLIC_CLARITY_ID || ''} />
           <ThemeProvider>
@@ -84,7 +84,7 @@ export default function RootLayout({
           </ThemeProvider>
           <CookieConsent />
         </body>
-      </ClerkProvider>
-    </html>
+      </html>
+    </ClerkProvider>
   );
 }

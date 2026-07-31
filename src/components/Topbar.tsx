@@ -2,12 +2,12 @@
 import { useState } from "react";
 import { Bell, Moon, Sun, Star, Sparkles, Terminal, LogIn, Menu, Search, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/context/ThemeContext";
 import { usePathname, useRouter } from "next/navigation";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignInButton, UserButton, useAuth } from "@clerk/nextjs";
 
 export function Topbar() {
+  const { isSignedIn } = useAuth();
   const { isDarkMode, toggleTheme } = useTheme();
   const pathname = usePathname();
   const router = useRouter();
@@ -23,7 +23,7 @@ export function Topbar() {
 
   return (
     <>
-    <header className="h-16 bg-white dark:bg-sidebar flex items-center justify-between px-3 sm:px-4 xl:px-8 fixed top-0 right-0 left-0 xl:left-64 z-40 border-b border-slate-100 dark:border-border-subtle transition-colors duration-300">
+    <header className="h-16 bg-white/70 dark:bg-sidebar/70 backdrop-blur-xl flex items-center justify-between px-3 sm:px-4 xl:px-8 fixed top-0 right-0 left-0 xl:left-64 z-40 border-b border-slate-100/50 dark:border-border-subtle/50 transition-colors duration-300">
       
       {/* Mobile Search Overlay */}
       {isMobileSearchOpen && (
@@ -98,16 +98,15 @@ export function Topbar() {
         </button>
         <div className="hidden sm:block w-px h-6 bg-slate-200 dark:bg-border-subtle mx-1"></div>
         <div className="flex items-center gap-2 sm:gap-3">
-          <SignedIn>
+          {isSignedIn ? (
             <UserButton afterSignOutUrl="/" appearance={{ elements: { userButtonAvatarBox: "w-8 h-8 sm:w-9 sm:h-9" } }} />
-          </SignedIn>
-          <SignedOut>
+          ) : (
             <SignInButton mode="modal">
               <button className="text-sm font-bold text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-2 sm:px-3 py-2 flex items-center gap-1.5">
                 <LogIn className="w-4 h-4 sm:w-5 sm:h-5" /> <span className="hidden sm:inline">Sign In</span>
               </button>
             </SignInButton>
-          </SignedOut>
+          )}
           <button className="hidden xl:flex bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-5 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm items-center gap-2">
             <Sparkles className="w-4 h-4"/> Go Premium
           </button>
