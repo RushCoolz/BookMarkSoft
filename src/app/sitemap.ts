@@ -3,7 +3,7 @@ import { toolCategories, generateToolId } from '@/data/tools';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Change this to your actual production domain or use an environment variable
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bookmarksoft.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bookmarksoft.uk';
 
   const routes: MetadataRoute.Sitemap = [
     {
