@@ -18,6 +18,7 @@
     "crypto-js": "^4.2.0",
     "dompurify": "^3.4.12",
     "fast-xml-parser": "^5.10.1",
+    "jimp": "^1.6.1",
     "js-beautify": "^2.0.3",
     "lucide-react": "^1.28.0",
     "marked": "^18.0.7",
