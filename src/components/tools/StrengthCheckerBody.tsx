@@ -1,12 +1,14 @@
 "use client";
 import { useState } from "react";
 import { ShieldAlert, ShieldCheck, Clock, AlertTriangle } from "lucide-react";
-const zxcvbn = require("zxcvbn");
+import { ZxcvbnFactory } from '@zxcvbn-ts/core';
 import { ToolContainer, ToolMain } from "../ui/tool/ToolContainer";
+
+const zxcvbn = new ZxcvbnFactory();
 
 export function StrengthCheckerBody() {
   const [password, setPassword] = useState("");
-  const result = zxcvbn(password);
+  const result = zxcvbn.check(password);
 
   const getScoreColor = () => {
     switch (result.score) {

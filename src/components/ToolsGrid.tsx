@@ -5,18 +5,18 @@ import { ToolCard } from "./ToolCard";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { toolCategories, generateToolId } from "../data/tools";
-export function ToolsGrid() {
-  const searchParams = useSearchParams();
-  const initialQuery = searchParams.get("q") || "";
-  const [searchQuery, setSearchQuery] = useState(initialQuery.toLowerCase());
+import { Suspense } from "react";
 
+function SearchParamsHandler({ onQuery }: { onQuery: (q: string) => void }) {
+  const searchParams = useSearchParams();
   useEffect(() => {
-    // If the URL changes (e.g. from subpage navigation), update the state
-    const q = searchParams.get("q");
-    if (q !== null) {
-      setSearchQuery(q.toLowerCase());
-    }
-  }, [searchParams]);
+    onQuery(searchParams.get("q") || "");
+  }, [searchParams, onQuery]);
+  return null;
+}
+
+export function ToolsGrid() {
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const handleSearch = (e: CustomEvent) => {
@@ -39,16 +39,24 @@ export function ToolsGrid() {
 
   if (filteredCategories.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-32">
-        <Search className="w-16 h-16 text-slate-200 dark:text-slate-700 mb-4" />
-        <h2 className="text-xl font-bold text-slate-600 dark:text-slate-400 mb-2">No tools found</h2>
-        <p className="text-slate-400 dark:text-slate-500 text-sm">We couldn't find any tools matching "{searchQuery}"</p>
-      </div>
+      <>
+        <Suspense fallback={null}>
+          <SearchParamsHandler onQuery={(q) => setSearchQuery(q.toLowerCase())} />
+        </Suspense>
+        <div className="flex flex-col items-center justify-center py-32">
+          <Search className="w-16 h-16 text-slate-200 dark:text-slate-700 mb-4" />
+          <h2 className="text-xl font-bold text-slate-600 dark:text-slate-400 mb-2">No tools found</h2>
+          <p className="text-slate-400 dark:text-slate-500 text-sm">We couldn't find any tools matching "{searchQuery}"</p>
+        </div>
+      </>
     );
   }
 
   return (
     <div className="space-y-16">
+      <Suspense fallback={null}>
+        <SearchParamsHandler onQuery={(q) => setSearchQuery(q.toLowerCase())} />
+      </Suspense>
       {filteredCategories.map((category) => (
         <div key={category.id} id={category.id} className="scroll-mt-24">
           <div className="flex items-center justify-between mb-6 px-2">
@@ -59,7 +67,7 @@ export function ToolsGrid() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-5">
             {category.tools.map((tool, index) => (
-              <Link href={`/tools/${generateToolId(tool.title)}`} key={index} className="block hover:no-underline">
+              <Link href={`/tools/${generateToolId(tool.title)}`} key={index} className="block hover:no-underline" prefetch={false}>
                 <ToolCard {...tool} id={generateToolId(tool.title)} />
               </Link>
             ))}

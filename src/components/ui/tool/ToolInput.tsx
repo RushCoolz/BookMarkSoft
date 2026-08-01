@@ -32,7 +32,7 @@ export function ToolInput({
     }
   };
 
-  const baseInputClass = "w-full p-4 border border-slate-200 dark:border-slate-700 rounded-xl font-mono text-sm bg-slate-50 dark:bg-slate-800/50 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:bg-slate-900 outline-none transition-all";
+  const baseInputClass = "w-full p-4 border border-white/50 dark:border-slate-700/50 rounded-xl font-mono text-sm bg-white/40 dark:bg-slate-800/40 backdrop-blur-sm focus:bg-white/80 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:bg-slate-900/60 outline-none transition-all";
 
   return (
     <div className={`flex flex-col flex-1 h-full min-h-[200px] ${className}`}>

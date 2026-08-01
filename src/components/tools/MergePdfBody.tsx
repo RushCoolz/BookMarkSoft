@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { PDFDocument } from "pdf-lib";
+import { PDFDocument } from "pdf-lib/dist/pdf-lib.esm.js";
 import { FileUp, Combine, Download, Trash2, File as FileIcon } from "lucide-react";
 import { ToolContainer, ToolMain } from "../ui/tool/ToolContainer";
 import { ToolAction } from "../ui/tool/ToolAction";

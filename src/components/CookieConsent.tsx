@@ -131,15 +131,15 @@ export function CookieConsent() {
     }
   }, []);
 
-  // Block / restore body scroll while banner or modal is open
+  // Block / restore body scroll while modal is open
   useEffect(() => {
-    if (visible || showModal) {
+    if (showModal) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
     return () => { document.body.style.overflow = ""; };
-  }, [visible, showModal]);
+  }, [showModal]);
 
   const saveAndClose = (finalConsent: ConsentState) => {
     pushConsent(finalConsent, "update");
@@ -165,10 +165,12 @@ export function CookieConsent() {
       {/* ------------------------------------------------------------------ */}
       {/* Full-screen scroll-blocking backdrop                                */}
       {/* ------------------------------------------------------------------ */}
-      <div
-        className="fixed inset-0 z-[9998] bg-slate-900/40 backdrop-blur-[2px]"
-        aria-hidden="true"
-      />
+      {showModal && (
+        <div
+          className="fixed inset-0 z-[9998] bg-slate-900/40 backdrop-blur-[2px]"
+          aria-hidden="true"
+        />
+      )}
 
       {/* ------------------------------------------------------------------ */}
       {/* Bottom banner                                                        */}

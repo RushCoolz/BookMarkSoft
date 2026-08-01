@@ -25,7 +25,7 @@ export function ToolCard({ title, subtitle, icon, iconColor, rating, isBeta, isN
   };
 
   return (
-    <div onClick={onClick} className="group relative bg-white dark:bg-slate-900/50 p-4 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 cursor-pointer flex flex-col h-full hover:-translate-y-1">
+    <div onClick={onClick} className="group relative bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl p-4 sm:p-6 rounded-2xl border border-white/40 dark:border-slate-800/60 hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 cursor-pointer flex flex-col h-full hover:-translate-y-1">
       <div className="absolute top-3 left-3 sm:top-4 sm:left-4 flex items-center gap-2">
         {isBeta && (
           <span className="text-[10px] font-bold text-blue-500 dark:text-blue-400 tracking-wider">

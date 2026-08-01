@@ -39,7 +39,7 @@ export function ToolOutput({
           value={value}
           readOnly
           placeholder={placeholder}
-          className={`flex-1 w-full p-4 border rounded-xl font-mono text-sm bg-slate-900 dark:bg-slate-950 text-blue-400 outline-none resize-none transition-all custom-scrollbar ${error ? 'border-red-500' : 'border-slate-800'}`}
+          className={`flex-1 w-full p-4 border rounded-xl font-mono text-sm bg-slate-900/80 dark:bg-slate-950/80 backdrop-blur-md text-blue-400 outline-none resize-none transition-all custom-scrollbar ${error ? 'border-red-500/50' : 'border-slate-700/50'}`}
         ></textarea>
         
         {allowCopy && (

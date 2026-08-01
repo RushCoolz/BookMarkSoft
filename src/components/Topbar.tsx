@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Bell, Moon, Sun, Star, Sparkles, Terminal, LogIn, Menu, Search, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "@/context/ThemeContext";
@@ -12,6 +12,23 @@ export function Topbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        if (window.innerWidth >= 1280) {
+          searchInputRef.current?.focus();
+        } else {
+          setIsMobileSearchOpen(true);
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const handleSearch = (val: string) => {
     if (pathname !== "/") {
@@ -70,11 +87,15 @@ export function Topbar() {
       <div className="hidden xl:block flex-1 max-w-md mx-6 relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
         <input 
+          ref={searchInputRef}
           type="text" 
-          placeholder="Search tools..." 
+          placeholder="Search tools... (Ctrl+K)" 
           onChange={(e) => handleSearch(e.target.value)}
           className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-full pl-10 pr-4 py-2 text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-500 transition-all shadow-sm"
         />
+        <div className="absolute right-3 top-1/2 -translate-y-1/2 hidden lg:flex items-center gap-1">
+          <kbd className="px-1.5 py-0.5 text-[10px] font-medium text-slate-500 dark:text-slate-400 bg-slate-200 dark:bg-slate-700 rounded border border-slate-300 dark:border-slate-600">⌘K</kbd>
+        </div>
       </div>
 
       <div className="flex items-center gap-1 sm:gap-3 xl:gap-4 shrink-0">

@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { Bookmark, Mail, Globe } from "lucide-react";
 

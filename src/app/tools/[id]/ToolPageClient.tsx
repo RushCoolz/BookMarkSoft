@@ -144,6 +144,10 @@ interface ToolPageClientProps {
 export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
   const router = useRouter();
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [toolId]);
+
   const renderToolBody = () => {
     if (toolId.includes("password-generator") || toolId.includes("password")) return <PasswordGeneratorBody />;
     if (toolId.includes("json-formatter")) return <JsonFormatterBody />;
@@ -307,7 +311,7 @@ export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
       </div>
 
       {/* Tool Body Container */}
-      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-6 md:p-8 min-h-[60vh]">
+      <div className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl rounded-2xl shadow-sm border border-white/40 dark:border-slate-800/60 p-6 md:p-8 min-h-[60vh]">
         {renderToolBody()}
       </div>
 
