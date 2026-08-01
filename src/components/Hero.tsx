@@ -2,7 +2,7 @@ import { AdSenseMock } from "./AdSenseMock";
 
 export function Hero() {
   return (
-    <div className="mb-10 w-full animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out">
+    <div className="mb-10 w-full">
       <div className="w-full min-h-[200px] py-8 rounded-[2rem] bg-slate-900 relative overflow-hidden flex flex-col items-center justify-center text-center px-6 shadow-2xl shadow-blue-900/20 border border-slate-800/60">
         
         {/* Premium glowing mesh background */}
@@ -14,7 +14,7 @@ export function Hero() {
         </div>
 
         {/* Floating Glass Badges */}
-        <div className="absolute top-8 right-[15%] w-12 h-12 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl rotate-12 flex items-center justify-center shadow-2xl hidden md:flex animate-pulse">
+        <div className="absolute top-8 right-[15%] w-12 h-12 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl rotate-12 flex items-center justify-center shadow-2xl hidden md:flex">
           <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-blue-500 to-cyan-400 blur-[2px]"></div>
         </div>
         <div className="absolute bottom-12 left-[10%] w-16 h-16 bg-white/5 backdrop-blur-md border border-white/10 rounded-full -rotate-12 flex items-center justify-center shadow-2xl hidden lg:flex">
@@ -23,7 +23,6 @@ export function Hero() {
 
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-sky-300 text-xs font-semibold uppercase tracking-widest mb-4 z-10 shadow-inner">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
           </span>
           Next-Gen Developer Utilities

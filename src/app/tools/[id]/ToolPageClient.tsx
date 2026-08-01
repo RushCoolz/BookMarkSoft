@@ -293,25 +293,35 @@ export function ToolPageClient({ tool, toolId }: ToolPageClientProps) {
   return (
     <div className="w-full max-w-5xl mx-auto space-y-6 pt-4 pb-12">
       {/* Header */}
-      <div className="flex items-center gap-4 px-2">
-        <button onClick={() => router.back()} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 transition-colors">
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        <div className={`w-12 h-12 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center ${tool.iconColor}`}>
-          {tool.icon}
-        </div>
-        <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-200">{tool.title}</h1>
-            {tool.isBeta && <span className="text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-1.5 py-0.5 rounded uppercase tracking-wider">BETA</span>}
-            {tool.isNew && <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/30 px-1.5 py-0.5 rounded uppercase tracking-wider">NEW</span>}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-2 mb-8 mt-2">
+        <div className="flex items-center gap-5">
+          <button onClick={() => router.back()} className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/50 dark:bg-white/5 border border-slate-200/50 dark:border-white/10 text-slate-500 hover:text-slate-800 dark:hover:text-white hover:bg-white dark:hover:bg-white/10 hover:shadow-md transition-all">
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <div className="flex items-center gap-4">
+            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-white/50 dark:border-white/10 ${tool.iconColor}`}>
+              <div className="scale-125 drop-shadow-sm">
+                {tool.icon}
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-3 mb-1">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                  {tool.title}
+                </h1>
+                {tool.isBeta && <span className="text-[10px] font-bold text-blue-600 dark:text-sky-400 bg-blue-100/50 dark:bg-sky-500/10 border border-blue-200 dark:border-sky-500/20 px-2 py-0.5 rounded-full uppercase tracking-widest shadow-sm">BETA</span>}
+                {tool.isNew && <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-100/50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 px-2 py-0.5 rounded-full uppercase tracking-widest shadow-sm">NEW</span>}
+              </div>
+              <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">
+                {tool.subtitle}
+              </p>
+            </div>
           </div>
-          <p className="text-slate-500 dark:text-slate-400">{tool.subtitle}</p>
         </div>
       </div>
 
       {/* Tool Body Container */}
-      <div className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl rounded-2xl shadow-sm border border-white/40 dark:border-slate-800/60 p-6 md:p-8 min-h-[60vh]">
+      <div className="bg-white/70 dark:bg-[#0B1120]/40 backdrop-blur-3xl rounded-[2rem] shadow-2xl dark:shadow-[0_0_40px_-15px_rgba(0,0,0,0.5)] border border-white/60 dark:border-white/5 p-6 md:p-10 min-h-[60vh] ring-1 ring-black/5 dark:ring-white/5">
         {renderToolBody()}
       </div>
 

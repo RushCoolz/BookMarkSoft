@@ -40,7 +40,7 @@ export function Topbar() {
 
   return (
     <>
-    <header className="h-16 bg-white/70 dark:bg-sidebar/70 backdrop-blur-xl flex items-center justify-between px-3 sm:px-4 xl:px-8 fixed top-0 right-0 left-0 xl:left-64 z-40 border-b border-slate-100/50 dark:border-border-subtle/50 transition-colors duration-300">
+    <header className="h-16 bg-white/60 dark:bg-[#0B1120]/60 backdrop-blur-2xl flex items-center justify-between px-3 sm:px-4 xl:px-8 fixed top-0 right-0 left-0 xl:left-64 z-40 border-b border-slate-200/50 dark:border-white/[0.05] shadow-sm dark:shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-colors duration-500">
       
       {/* Mobile Search Overlay */}
       {isMobileSearchOpen && (
@@ -91,7 +91,7 @@ export function Topbar() {
           type="text" 
           placeholder="Search tools... (Ctrl+K)" 
           onChange={(e) => handleSearch(e.target.value)}
-          className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-full pl-10 pr-4 py-2 text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-500 transition-all shadow-sm"
+          className="w-full bg-slate-50/50 dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-white/5 rounded-full pl-10 pr-4 py-2 text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30 focus:border-sky-500 dark:focus:border-sky-500/50 transition-all shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] hover:bg-slate-50 dark:hover:bg-[#0f172a]"
         />
         <div className="absolute right-3 top-1/2 -translate-y-1/2 hidden lg:flex items-center gap-1">
           <kbd className="px-1.5 py-0.5 text-[10px] font-medium text-slate-500 dark:text-slate-400 bg-slate-200 dark:bg-slate-700 rounded border border-slate-300 dark:border-slate-600">⌘K</kbd>

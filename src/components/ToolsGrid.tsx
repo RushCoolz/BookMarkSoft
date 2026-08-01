@@ -59,10 +59,13 @@ export function ToolsGrid() {
       </Suspense>
       {filteredCategories.map((category) => (
         <div key={category.id} id={category.id} className="scroll-mt-24">
-          <div className="flex items-center justify-between mb-6 px-2">
-            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-200 tracking-tight">{category.title}</h2>
-            <button className="text-sm font-bold text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1.5 bg-white dark:bg-slate-800/50 px-3 py-1.5 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700/50">
-              <Cloud className="w-4 h-4 text-blue-500 dark:text-blue-400"/> View All in {category.title.split(' ')[0]}
+          <div className="flex items-center justify-between mb-8 px-2 relative group cursor-pointer">
+            <h2 className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-500 dark:from-white dark:to-slate-400 tracking-tight flex items-center gap-3">
+              <span className="w-1.5 h-6 bg-blue-500 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]"></span>
+              {category.title}
+            </h2>
+            <button className="text-xs font-bold text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-sky-400 transition-colors flex items-center gap-2 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm px-4 py-2 rounded-xl border border-slate-200/50 dark:border-white/5 shadow-sm opacity-0 group-hover:opacity-100">
+              <Cloud className="w-4 h-4 text-blue-500 dark:text-sky-400"/> View All
             </button>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-5">

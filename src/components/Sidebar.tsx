@@ -135,10 +135,10 @@ export function Sidebar() {
             key={item.id}
             href={`/#${item.id}`}
             onClick={(e) => scrollTo(e, item.id)}
-            className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+            className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
               activeSection === item.id && pathname === "/"
-                ? "text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-500/10"
-                : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200"
+                ? "text-blue-600 dark:text-sky-400 bg-blue-50/80 dark:bg-sky-500/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]"
+                : "text-slate-500 dark:text-slate-400 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 hover:text-slate-900 dark:hover:text-slate-200"
             }`}
           >
             <item.icon className="w-4 h-4" />
