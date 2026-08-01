@@ -98,7 +98,7 @@ export function Sidebar() {
       <aside className={`flex flex-col w-64 h-screen bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border-r border-slate-200/50 dark:border-slate-800/50 fixed left-0 top-0 z-50 transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'} xl:translate-x-0`}>
         <div className="pt-6 pb-4 flex items-center justify-between px-6">
           <Link href="/" className="flex items-center gap-2 font-bold text-xl text-slate-800 dark:text-slate-200 tracking-tight cursor-pointer">
-            <img src="/logo.png" alt="BookmarkSoft Logo" className="w-8 h-8 object-contain mix-blend-multiply dark:mix-blend-normal dark:invert" />
+            <img src="/logo.png" alt="BookmarkSoft Logo" className="w-8 h-8 object-contain rounded-lg shadow-sm" />
             BookmarkSoft
           </Link>
           <button 
